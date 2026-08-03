@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" as="stylesheet">
+    <title>Tienda tuya</title>
+</head>
+<body>
+    <header class="contenedor_header">
+        <div>
+            <img class="logo" src="img/Logo Crown PNG.jpg" alt="">
+            <a href="index.html" class="titulo">Tienda de productos</a>
+        </div>
+            <div>
+                <a class="login_button" href="login.html">login</a>
+                <a href="carrito.html" class="iconoCarrito"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M15 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 17h-11v-14h-2" /><path d="M6 5l14 1l-1 7h-13" /></svg></a>
+            </div>
+            
+    </header>
+    <main class="bg_img ">
+        <div class="sombra">
+            <h2 class="titulo_productos">PRODUCTOS RECOMENDADOS</h2>
+            <section class="contenedor_main contenedor_main-productos">
+                <div class="contenedor_productos-recomendados" id='contenedorProductosRecomendados'></div>
+            </section>
+        </div>
+		
+    </main>
+    <section class="contenedor_ul-productos">
+        <h2 class="titulo_productosIndex">Productos de la tienda</h2>
+        <div class="buscadoresProductos">
+            <div>
+                <label for="buscadorProducto">Buscar productos:</label><br>
+                <input type="text" id="buscadorProducto" oninput="inputBuscarProducto()" placeholder="Buscar producto">
+            </div>
+            <div>
+                <label for="selectorCategoria">seleccionar categoria:</label><br>
+                <select id="selectorCategoria" onchange="selectorCategoria()">
+                    <option value="sinCategoria">sin categoria</option>
+                    <option value="electrodomestico">Electrodomesticos</option>
+                    <option value="juguetes">Juguetes</option>
+                    <option value="ropa">Ropas</option>
+                </select>
+            </div>
+        </div>
+        <ul id="ul_productos"></ul>
+    </section>
+    <footer>
+        
+    </footer>
+	<script src ='script/index.js'></script>
+    <script src = "script/carrito-de-compras.js"></script>
+	
+</body>
+</html>

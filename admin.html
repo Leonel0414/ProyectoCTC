@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Administracion de productos - TIENDA MIXTA</title>
+		<meta charset='UTF-8'>
+		   <link rel="stylesheet" href="css/style.css" as="stylesheet">
+	</head>
+	
+	<body>
+		<header>
+        <div class="contenedor_header">
+			<div>
+				<img class="logo" src="img/Logo Crown PNG.jpg" alt="">
+            
+            	<h1 class="titulo">Tienda de productos</h1>
+			</div>
+			<a href='index.html'><p class='login_button'>LOGOUT</p></a>
+        </div>
+    </header>
+
+		<main class='admin_Conteiner'>
+		
+			<section class='creadorProductos admin_Card'>
+				<form >
+					<div class='titulo'>
+						<h3>CREADOR DE <br> PRODUCTOS</h3>
+					</div>
+					
+					<div>
+						<label for='nombreProducto'>Nombre del producto:</label><br>
+						<input type='text' class='inputAdmin input' id='nombreProducto' name='nombreProducto'>
+					</div>
+					<div>
+						<label for='cantidadProducto'>Stock del producto:
+						<input type='number' class='inputAdmin input' id='cantidadProducto' name='cantidadProducto' min=1 >
+					</div>
+					<div>
+						<label for='precioProducto'>Precio del producto:
+						<input type='number' class='inputAdmin input' id='precioProducto' name='precioProducto' min=1 >
+					</div>
+					<div>
+						<label for='imagenProducto'>Imagen del producto:
+						<input type='text' class='inputAdmin input' id='imagenProducto' name='imagenProducto'>
+					</div>
+					<div>
+						<label for='ivaProducto'>Seleccione el tipo de iva: </label><br>
+						<select class='inputAdmin' id='ivaProducto'>
+							<option value=''>Seleccione:</option>
+							<option value='Minimo'>Minimo</option>
+							<option value='Basico'>Basico</option>
+						</select>
+					
+					</div>
+					<div>
+						<label for='categoriaProducto'>Seleccione la categoria del producto: </label><br>
+						<select class='inputAdmin' id='categoriaProducto'>
+							<option value=''>Seleccione:</option>
+							<option value='electrodomestico'>Electrodomestico</option>
+							<option value='ropa'>Ropa</option>
+							<option value='juguetes'>Juguetes</option>
+						</select>
+					
+					</div>
+					<div>
+						<label for='infoProducto'>Descripcion del producto: </label><br>
+						<textarea id='infoProducto' class='inputAdmin input'></textarea>
+					</div>
+					
+					<div>
+						<button type='button' class='boton' onclick='crearProducto()'>CREAR</button>
+
+					</div>
+					<h4>PRODUCTOS</h4>
+					<div id='parrafo'>
+					</div>
+				</form>
+			</section>
+			
+
+    
+			
+			
+		
+		
+			<section class='modificadorProductos admin_Card'>
+					<form>
+						<div class='titulo'>
+							<h3>MODIFICADOR DE <br> PRODUCTOS</h3>
+						</div>
+						<div>
+							<label for='productoABuscar'>Nombre de producto a modificar:</label><br>
+							<input  type='text'class='input' id='productoABuscar' name='productoaBuscar' >
+							<button type='button' class='boton' onclick='buscarYMostrar()'>Buscar</button> 
+							<button type='button' class='boton' onclick='borrarProducto()'>Borrar Producto</button> 	</br> 
+
+						
+						</div>
+						<div>
+							<label for='nombreProductoAModificar'>Nombre del producto:
+							<input type='text' class='input' id='nombreProductoAModificar' name='nombreProductoAModificar'>
+						
+						</div>
+						<div>
+							<label for='cantidadProductoAModificar'>Stock del producto:
+							<input type='number'class='input' id='cantidadProductoAModificar' name='cantidadProductoAModificar' min=1 >
+						</div>
+						<div>
+							<label for='precioProductoAModificar'>Precio del producto:
+							<input type='number' class='input' id='precioProductoAModificar' name='precioProductoAModificar' min=1 >
+						</div>
+						<div>
+							<label for='imagenAModificar'>Imagen del producto:<img src='' id='imagen' width='100px'>
+							<input type='text' class='input' id='imagenAModificar' name='imagenAModificar'>
+						
+						</div>
+						<div>
+							<label for='ivaProducto'>Seleccione el tipo de iva: </label><br>
+							<select class='inputAdmin' id='ivaProductoAModificar'>
+								<option value=''>Seleccione:</option>
+								<option value='Minimo'>Minimo</option>
+								<option value='Basico'>Basico</option>
+							</select>
+					
+						</div>
+						
+						<div>
+							<label for='categoriaProductoAModificar'>Seleccione la categoria del producto: </label><br>
+							<select class='inputAdmin' id='categoriaProductoAModificar'>
+								<option value=''>Seleccione:</option>
+								<option value='electrodomestico'>Electrodomestico</option>
+								<option value='ropa'>Ropa</option>
+								<option value='juguetes'>Juguetes</option>
+							</select>
+						
+						</div>
+						<div>
+							<label for='infoProductoAModificar'>Descripcion del producto: </label><br>
+							<textarea id='infoProductoAModificar' class='inputAdmin'></textarea>
+							
+						</div>
+						<div>
+							<button type='button' class='boton' onclick='modificar()'>Modificar</button>
+							
+						</div>
+				
+					</form>
+			</section>
+					
+		</main>
+	
+	</body>
+	
+	
+	<footer>
+	<div id='recibo'></div>
+	</footer>
+	<script src='./script/admin.js'></script>
+</html>
