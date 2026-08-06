@@ -193,13 +193,8 @@ function botonComprar(){
             totalIva: ivaTotal,
         }
 
-		
-
         productosComprados.push(productoComprado);
 		
-		
-        
-
         for(let productosExistentes of productosRegistrados){
             if(productosExistentes.nroIdentificador == producto.nroIdentificador){
                 if(productosExistentes.stock >= producto.cantidad){
@@ -227,6 +222,9 @@ function botonComprar(){
     
     localStorage.setItem('compras',JSON.stringify(compras));
 
-    mostrarCarrito()
-    alert("Compra realizada con exito")
+    listaCarrito = [];
+    localStorage.removeItem("listaCarrito");
+    nombreComprador = "";
+    mostrarCarrito();
 }
+
