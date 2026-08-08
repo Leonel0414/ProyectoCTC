@@ -1,79 +1,201 @@
-let administrador = JSON.parse(localStorage.getItem('administrador'));
 let usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+let usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
+
+console.log("usuarioActivo",usuarioActivo);
+console.log("usuarioRegistrado",usuariosRegistrados);
 
 class Usuario{
     constructor(datos){
-        this.nombre = datos.nombre
-        this.correo = datos.correo
-        this.contrasena = datos.contrasena
-        this.telefono = datos.telefono
-        this.departamento = datos.departamento
-        this.direccion = datos.direccion
-    }
+        this.nombre = datos.nombre || "indefenido"
+        this.correo = datos.correo || "indefinido"
+        this.contrasena = datos.contrasena || "indefinido"
+        this.telefono = datos.telefono || "indefinido"
+        this.departamento = datos.departamento || "indefinido"
+        this.direccion = datos.direccion || "indefinido"
 
-}
-
-if(!administrador){
-    administrador = {
-        usuario: 'admin',
-        contrasena: 111222
-    }
-    localStorage.setItem('administrador',JSON.stringify(administrador));
-}
-
-function ingresar(){
-    let usuarioInput = document.getElementById('usuarioLogin').value;
-    let usuarioContrasena = document.getElementById('usuarioContrasena').value;
-
-    if(usuarioInput == administrador.usuario && usuarioContrasena == administrador.contrasena){
-        window.location.replace('admin.html')
+        this.id = usuariosRegistrados.length + 1
+        this.rol = datos.rol || "usuario"
     }
 }
+
+//admin
+let adminEncontrado = false;
+
+for(let usuario of usuariosRegistrados){
+    if(usuario.rol === "admin"){
+        adminEncontrado = true;
+    }
+}
+
+if(!adminEncontrado){
+        let administrador = new Usuario({
+            nombre:'administrador',
+            correo:"admin@",
+            contrasena:"1234",
+            rol:"admin"
+        })
+
+        usuariosRegistrados.push(administrador);
+        localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosRegistrados));
+}
+
+
+
+
+//login
 
 let botonIngresar = document.getElementById('btnIngresar')
-botonIngresar.addEventListener('click',ingresar)
+if(botonIngresar){
+    botonIngresar.addEventListener("click", ()=>{
+
+        let formularioLogin = document.getElementById('formLogin')
+
+        let correoLogin = document.getElementById('correoLogin').value;
+        let contrasenaLogin = document.getElementById('contrasenaLogin').value;
+
+        let mensajeErrorCorreoLogin = document.getElementById('mensajeErrorCorreoLogin');
+        let mensajeErrorContrasenaLogin = document.getElementById('mensajeErrorContrasenaLogin');
+
+        mensajeErrorCorreoLogin.textContent = '';
+        mensajeErrorContrasenaLogin.textContent = '';
+
+        let usuarioEncontrado;
+
+        for(let usuario of usuariosRegistrados){
+
+            if(correoLogin === usuario.correo){
+                usuarioEncontrado = usuario;
+                console.log('usuarioEncontrado',usuarioEncontrado);
+            }
+        }
+            
+        if(!usuarioEncontrado){
+            mensajeErrorCorreoLogin.textContent = "Correo electronico no existe";
+            return;
+        }
+        
+        if(usuarioEncontrado){
+            if(contrasenaLogin !== usuarioEncontrado.contrasena){
+                mensajeErrorContrasenaLogin.textContent = "contrasena incorrecta";
+
+            return;
+            }
+        }
+        
+        localStorage.setItem('usuarioActivo', JSON.stringify(usuarioEncontrado));
+
+        if(usuarioEncontrado.rol === "usuario"){
+                window.location.replace('index.html');
+                return;
+        }
+        else if(usuarioEncontrado.rol === "admin"){
+                window.location.replace('admin.html');
+                return;
+        }
+
+        formularioLogin.reset()
+    })
+} 
 
 //Registro
 
 let botonRegistrar = document.getElementById('btnRegistrar');
-botonRegistrar.addEventListener("click", ()=>{
-    
-    let nombreRegistro = document.getElementById('nombreRegistro').value;
-    let correoRegistro = document.getElementById('correoRegistro').value;
-    let contrasenaRegistro = document.getElementById('contrasenaRegistro').value;
-    let confirmarContrasenaRegistro = document.getElementById('confirmacionContrasenaRegistro')
-    let departamentoRegistro = document.getElementById('departamentoRegistro').value;
-    let direccionRegistro = document.getElementById('direccionRegistro').value
-
-    let divisorError = document.getElementById('mensajeError');
-    let mensajeError = document.createElement('p');
-    mensajeError.innerHTML = ""
-
-    switch(true){
-        case nombreRegistro === "":
-        case correoRegistro === "":
-        case contrasenaRegistro === "":
-        case departamentoRegistro === "":
-        case direccionRegistro === "":
-            mensajeError.innerHTML = "<p>Completa todos lo campos correctamente</p>"
-            divisorError.appendChild(mensajeError)
-            return
-            break;
+if(botonRegistrar){
+    botonRegistrar.addEventListener("click", () => {
         
-    }
+        let formularioRegistro = document.getElementById('formRegistro')
 
-    if(contrasenaRegistro !== confirmarContrasenaRegistro){
-        mensajeError.innerHTML = "<p>confirmacion de contrasena diferente. Escribe correctamente la contrasena.</p>"
-    }
+        let nombreRegistro = document.getElementById('nombreRegistro').value;
+        let correoRegistro = document.getElementById('correoRegistro').value;
+        let contrasenaRegistro = document.getElementById('contrasenaRegistro').value;
+        let confirmarContrasenaRegistro = document.getElementById('confirmacionContrasenaRegistro').value;
+        let telefonoRegistro = document.getElementById('telefonoRegistro').value;
+        let departamentoRegistro = document.getElementById('departamentoRegistro').value;
+        let direccionRegistro = document.getElementById('direccionRegistro').value;
 
-    let usuario = new Usuario({
-        nombre:nombreRegistro,
-        correo:correoRegistro,
-        contrasena:contrasenaRegistro,
-        departamento:departamentoRegistro,
-        direccion:direccionRegistro
+        let divisorError = document.getElementById('mensajeError');
+        divisorError.textContent = ""
+        
+        let mensajeError = document.createElement('p');
+
+        switch(true){
+            case nombreRegistro === "":
+            case correoRegistro === "":
+            case contrasenaRegistro === "":
+            case confirmarContrasenaRegistro === "":
+            case departamentoRegistro === "":
+            case direccionRegistro === "":
+                mensajeError.textContent = "Completa todos lo campos correctamente";
+                divisorError.appendChild(mensajeError);
+                return
+                break;
+        }
+
+        for(let usuario of usuariosRegistrados){
+            if(correoRegistro === usuario.correo){
+                mensajeError.textContent = "Correo ya existente.";
+                divisorError.appendChild(mensajeError);
+                return;
+            }
+        }
+
+        if(contrasenaRegistro !== confirmarContrasenaRegistro){
+            mensajeError.textContent = "confirmacion de contrasena diferente. Escribe correctamente la contrasena."
+            divisorError.appendChild(mensajeError);
+            return;
+        }
+
+        let usuario = new Usuario({
+            nombre:nombreRegistro,
+            correo:correoRegistro,
+            contrasena:contrasenaRegistro,
+            telefono:telefonoRegistro,
+            departamento:departamentoRegistro,
+            direccion:direccionRegistro
+        })
+
+        usuariosRegistrados.push(usuario);
+        localStorage.setItem('usuariosRegistrados',JSON.stringify(usuariosRegistrados));
+        formularioRegistro.reset()
     })
+}
 
-    usuariosRegistrados.push(usuario);
-    localStorage.setItem('usuariosRegistrados',JSON.stringify(usuariosRegistrados));
-})
+
+//logout
+let botonLogOut = document.getElementById('login_log-out');
+
+if(botonLogOut){
+    if(!usuarioActivo){       
+        botonLogOut.textContent = 'login';
+        botonLogOut.addEventListener('click', ()=>{
+            window.location.replace('login.html')
+        })
+    }
+    else{
+        botonLogOut.textContent = 'log-out';
+
+        botonLogOut.addEventListener("click",() => {
+            localStorage.removeItem('usuarioActivo');
+            usuarioActivo = null;
+
+            window.location.replace('index.html');
+        })
+    }
+}
+
+if(usuarioActivo && usuarioActivo.rol === 'admin'){
+    let divisorHeaderIndex = document.getElementById('divisorHeaderIndex')
+    
+    if(divisorHeaderIndex){
+        let botonAdministrador = document.createElement('button');
+    
+        botonAdministrador.className = 'login_button';
+        botonAdministrador.textContent = 'admin';
+        botonAdministrador.style = "margin-right: 10px"
+        divisorHeaderIndex.prepend(botonAdministrador);
+        
+        botonAdministrador.addEventListener('click',() =>{
+            window.location.replace('admin.html')
+        })
+    }
+ }

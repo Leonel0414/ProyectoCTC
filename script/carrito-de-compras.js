@@ -2,18 +2,24 @@
 
 //storage
 
-productosRegistrados = JSON.parse(localStorage.getItem("productosRegistrados"))
+productosRegistrados = JSON.parse(localStorage.getItem("productosRegistrados"));
+usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
 
 //CARRITO DE COMPRAS
 
 let listaCarrito = JSON.parse(localStorage.getItem('listaCarrito')) || [];
 
-mostrarCarrito();
+
 
 
 console.log('listaCarrito:',listaCarrito);
 
 function agregarCarrito(id){
+
+    if(!usuarioActivo){
+        window.location.replace('login.html');
+        return;
+    }
 
     let existe = false;
 
@@ -58,11 +64,15 @@ function borrarProductoCarrito(id){
 }
 
 
+let ul = document.getElementById('carritoLista');
+if(ul){
+    mostrarCarrito();
+}
+
 function mostrarCarrito(){
     
-    let ul = document.getElementById('carritoLista');
     let resumen = document.getElementById('resumenCarrito');
-    
+
     listaCarrito = listaCarrito.filter(producto => producto.stock != 0)
     localStorage.setItem('listaCarrito',JSON.stringify(listaCarrito))
 
@@ -170,12 +180,7 @@ function botonComprar(){
 
     let productosComprados =  [];
 	
-    let nombreComprador = document.getElementById('nombreComprador').value;
-	if(nombreComprador == "" )
-		{
-		alert('Ingrese su nombre');
-		return
-		}
+    let nombreComprador = usuarioActivo.nombre;
 
     let fechaCompra = new Date();
 	let opciones = { dia : 'long' , mes: 'long', anio : 'numeric' };

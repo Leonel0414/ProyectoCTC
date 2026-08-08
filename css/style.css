@@ -132,18 +132,23 @@ svg{
     color: var(--color5);
     text-transform: uppercase;
     font-weight: bolder;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .login_button:hover{
-    color: var(--colorbg);
+    color: var(--colorbg); 
 }
 
-.titulo_productos{
+.titulo_productos-recomendados{
     color: var(--color5);
     font-weight: bold;
     font-size: 30px;
     justify-self: center;
     margin: 20px auto;
+
+    text-align: center;
 }
 
 .contenedor_productos-recomendados{
@@ -422,6 +427,10 @@ svg{
     text-transform: uppercase;
     font-weight: bold;
     
+    color: var(--colorbg);
+}
+
+.form_login p{
     color: var(--colorbg);
 }
 
