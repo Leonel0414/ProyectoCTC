@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Productos-Registro</title>
+</head>
+<body>
+    <header>
+        <a  href='login.html'><svg id="flecha" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left-dashed">
+        	<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        	<path d="M5 12h6m3 0h1.5m3 0h.5" />
+        	<path d="M5 12l4 4" />
+        	<path d="M5 12l4 -4" />
+            </svg>
+        </a>
+    </header>
+    <main>
+        <fieldset>
+            <form id="formRegistro">
+                <div>
+                    <label for="nombreRegistro">Nombre completo</label>
+                    <input type="text" id="nombreRegistro" required>
+                </div>
+                <div>
+                    <label for="correoRegistro">Correo electronico</label>
+                    <input type="email" id="correoRegistro" required>
+                </div>
+                <div>
+                    <label for="contrasenaRegistro">Contrasena</label>
+                    <input type="pass" id="contrasenaRegistro" required>
+                </div>
+                <div>
+                    <label for="confirmacionContrasenaRegistro">Confirmar contrasena</label>
+                    <input type="pass" id="confirmacionContrasenaRegistro" required>
+                </div>
+                <div>
+                    <label for="telefonoRegistro">Numero de telefono</label>
+                    <input type="tel" id="telefonoRegistro" required>
+                </div>
+                <div>
+                    <label for="departamentoRegistro">Departamento/Provincia</label>
+                    <select id="departamentoRegistro">
+                        <option value="Artigas">Artigas</option>
+                        <option value="Canelones">Canelones</option>
+                        <option value="Cerro Largo">Cerro Largo</option>
+                        <option value="Colonia">Colonia</option>
+                        <option value="Durazno">Durazno</option>
+                        <option value="Flores">Flores</option>
+                        <option value="Florida">Florida</option>
+                        <option value="Lavalleja">Lavalleja</option>
+                        <option value="Maldonado">Maldonado</option>
+                        <option value="Montevideo">Montevideo</option>
+                        <option value="Paysandu">Paysandu</option>
+                        <option value="Rio Negro">Rio Negro</option>
+                        <option value="Rivera">Rivera</option>
+                        <option value="Rocha">Rocha</option>
+                        <option value="Salto">Salto</option>
+                        <option value="San Jose">San Jose</option>
+                        <option value="Soriano">Soriano</option>
+                        <option value="Tacuarembo">Tacuarembo</option>
+                        <option value="Treinta y Tres">Treinta y Tres</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="direccionRegistro">Direccion</label>
+                    <input type="text" id="direccionRegistro" required>
+                </div>
+                <div id="mensajeError"></div>
+                <div>
+                    <button type="button" id="btnRegistrar">Crear cuenta</button>
+                </div>
+            </form>
+        </fieldset>
+    </main>
+    <footer></footer>
+    <script src="/script/registro_login.js"></script>
+</body>
+</html>
