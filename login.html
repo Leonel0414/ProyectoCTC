@@ -18,32 +18,26 @@
     </header>
     <main class="contenedor_main-login">
         <fieldset class="fieldset_login">
-            <form class="form_login">
+            <form id="formLogin" class="form_login">
                 <div>
-                    <label for="usuarioLogin">Usuario</label><br>
-                    <input class="input" type="text" id="usuarioLogin" required>
+                    <label for="correoLogin">Correo Electronico</label><br>
+                    <input class="input" type="email" id="correoLogin" required><br><br>
+                    <p id="mensajeErrorCorreoLogin"></p>
                 </div>
                 <div>
                     <label for="usuarioContrasena">Contrasena</label><br>
-                    <input class="input" type="password" id="usuarioContrasena" required>
+                    <input class="input" type="password" id="contrasenaLogin" required><br><br>
+                    <p id="mensajeErrorContrasenaLogin"></p>
                 </div>
-                <button class="BtnCantidades" type="button" onclick="ingresar()">Ingresar</button>            
+                <div>
+                    <button id="btnIngresar" class="BtnCantidades" type="button">Ingresar</button><br><br>
+                    <a href="registro.html" class="login_button">No tengo cuenta</a>
+                </div>
+                    
             </form>
         </fieldset>
     </main>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
 </body>
-<script src="script/usuario.js"></script>
+<script src="script/registro_login.js"></script>
 </html>
