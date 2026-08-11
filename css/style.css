@@ -124,7 +124,7 @@ svg{
 
 .titulo{
     font-size: 30px;
-    color: var(--color5);
+    
     justify-self:left;
     white-space: nowrap;
     font-weight: bold;

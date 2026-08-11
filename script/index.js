@@ -19,7 +19,7 @@ function contadorIdentificador(){
 let remera = {
 		nombre :'Remera',
 		stock : 10,
-		precio: 150,
+		precio: 600,
 		foto : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZpePYg_wXBuFtbwHmCLK8J9WwWJ1hodtOPVcXNAqSWQ&s=10',
 		iva : 'Basico',
 		categoria :'ropa',
@@ -32,7 +32,7 @@ let remera = {
 let heladera = {
 		nombre :'Heladera',
 		stock : 10,
-		precio: 2500,
+		precio: 25000,
 		foto : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHoRzrGqCF_jN_zcu83LSpWIFcYuqpAfDS4Q11BPHofQ&s',
 		iva : 'Minimo',
 		categoria : 'electrodomestico'		,
@@ -44,7 +44,7 @@ let heladera = {
 let ligthyear ={
 		nombre :'Buzz Lightyear',
 		stock : 10,
-		precio: 5500,
+		precio: 560,
 		foto :' https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1-XTE8QKmngh0TobclNpjGQmYP_pQafPqVNB9wd_7_A&s=10',
 		iva : 'Minimo',
 		categoria : 'juguetes' ,
