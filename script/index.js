@@ -57,7 +57,7 @@ let ligthyear ={
 let pantalon = {
 		nombre :'Pantalon',
 		stock : 10,
-		precio: 1500,
+		precio: 2500,
 		foto : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJv2nXSqo171gJP8ndkByfFetQZxzluIUS76ds0RfQiw&s',
 		iva : 'Basico',
 		categoria :'ropa',
