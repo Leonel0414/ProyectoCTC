@@ -56,7 +56,7 @@
             <form id="formRegistro" class='creadorProductos admin_Card'>
                 <div>
                     <label for="nombreRegistro">Nombre completo</label>
-                    <input type="text" class='inputAdmin' id="nombreRegistro" required>
+                    <input type="text" class='inputAdmin' id="nombreRegistro" minlength='2' required>
                 </div>
                 <div>
                     <label for="correoRegistro">Correo electronico</label>
@@ -64,11 +64,11 @@
                 </div>
                 <div>
                     <label for="contrasenaRegistro">Contrasena</label>
-                    <input type="pass" class='inputAdmin' id="contrasenaRegistro" required>
+                    <input type="password" class='inputAdmin' minlength='2' id="contrasenaRegistro" required>
                 </div>
                 <div>
                     <label for="confirmacionContrasenaRegistro">Confirmar contrasena</label>
-                    <input type="pass" class='inputAdmin' id="confirmacionContrasenaRegistro" required>
+                    <input type="password" class='inputAdmin' minlength='2' id="confirmacionContrasenaRegistro" required>
                 </div>
                 <div>
                     <label for="telefonoRegistro">Numero de telefono</label>
@@ -100,7 +100,7 @@
                 </div>
                 <div>
                     <label for="direccionRegistro">Direccion</label>
-                    <input type="text" class='inputAdmin' id="direccionRegistro" required>
+                    <input type="text" class='inputAdmin' minlength='6' id="direccionRegistro" required>
                 </div>
                 <div id="mensajeError"></div>
                 <div>

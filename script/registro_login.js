@@ -157,6 +157,7 @@ if(botonRegistrar){
         usuariosRegistrados.push(usuario);
         localStorage.setItem('usuariosRegistrados',JSON.stringify(usuariosRegistrados));
         formularioRegistro.reset()
+	window.location.href = 'login.html'
     })
 }
 
