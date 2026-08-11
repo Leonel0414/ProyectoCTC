@@ -106,6 +106,9 @@ p{
     align-items: center;
 }
 
+nav{
+    background-color: #3B82F6 !important;
+} 
 
 svg{
     height: 30px;
@@ -157,6 +160,7 @@ margin:auto;
     border: none;
     background-color: transparent;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .login_button:hover{
@@ -248,6 +252,16 @@ margin:auto;
     justify-content: space-around;
 
     text-align: center;
+}
+
+
+/* Registro */
+
+
+.legend {
+margin:0;
+text-align:center;
+
 }
 
 /* carrito */
@@ -425,11 +439,13 @@ margin:auto;
     justify-content: center;
     height: 100vh;
     margin: 0;
+    
+
 }
 
 .fieldset_login{
     background-color: var(--color2);
-    width: 30vh;
+    width: 40vh;
     height: 40vh;
     border: var(--color1) solid 2px;
     border-radius:5px;
@@ -441,6 +457,7 @@ margin:auto;
     align-items: center;
     justify-items:center;
     height: 100%;
+    
 }
 
 .form_login div{
@@ -458,6 +475,7 @@ margin:auto;
 
 .form_login input{
     color: #000;
+	
 }
 
 .fieldset_login button{
@@ -468,6 +486,7 @@ margin:auto;
 
 
 /* Admin */
+
 
 
 .admin_Conteiner{
