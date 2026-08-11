@@ -106,8 +106,22 @@ if(botonRegistrar){
         let formularioRegistro = document.getElementById('formRegistro')
 
         let nombreRegistro = document.getElementById('nombreRegistro').value;
+if(nombreRegistro.length < 3){
+alert('ERROR - Ingrese un nombre valido!');
+return;
+}
         let correoRegistro = document.getElementById('correoRegistro').value;
+if(correoRegistro.length < 3){
+alert('ERROR - Ingrese un correo valido!');
+
+return;
+}
         let contrasenaRegistro = document.getElementById('contrasenaRegistro').value;
+if(contrasenaRegistro.length < 7){
+alert('ERROR - Ingrese una contrasena de 8 digitos o mas!');
+
+return;
+}
         let confirmarContrasenaRegistro = document.getElementById('confirmacionContrasenaRegistro').value;
         let telefonoRegistro = document.getElementById('telefonoRegistro').value;
         let departamentoRegistro = document.getElementById('departamentoRegistro').value;
@@ -157,7 +171,8 @@ if(botonRegistrar){
         usuariosRegistrados.push(usuario);
         localStorage.setItem('usuariosRegistrados',JSON.stringify(usuariosRegistrados));
         formularioRegistro.reset()
-	window.location.href = 'login.html'
+	alert('Bienvenido!');
+	window.location.href = 'login.html';
     })
 }
 
