@@ -1,10 +1,10 @@
-:root{
-    --color1:#5c241b;
-    --color2: #7b3722;
-    --color3: #a9562d;
-    --color4: #e68339;
-    --color5: #ffc047;
-    --colorbg: #ededed;
+:root {
+    --color1: #0B1F3A;
+    --color2: #123B66;
+    --color3: #1769AA;
+    --color4: #3FA9F5;
+    --color5: #8ED6FF;
+    --colorbg: #EAF6FF;
 }
 
 * {
@@ -21,9 +21,36 @@ ul{
     list-style-type: none;
 }
 
-body{
+.body{
     margin: 0px;
-    background-color: var(--colorbg);
+}
+.contenedorMain{
+    background-color:#0F3198;
+
+}
+.barra-oferta {
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    background-color: #171717;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.texto-oferta {
+    white-space: nowrap;
+    animation: moverDerechaAIzquierda 15s linear infinite;
+}
+
+@keyframes moverDerechaAIzquierda {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
 }
 
 input::-webkit-outer-spin-button,
@@ -79,6 +106,9 @@ p{
     align-items: center;
 }
 
+nav{
+    background-color: #3B82F6 !important;
+} 
 
 svg{
     height: 30px;
@@ -94,7 +124,7 @@ svg{
 
 .titulo{
     font-size: 30px;
-    color: var(--color5);
+    
     justify-self:left;
     white-space: nowrap;
     font-weight: bold;
@@ -109,15 +139,10 @@ svg{
 
 /* Main Index */
 .bg_img{
-    max-width: 100%;
-    background-image: url(../img/backgroundSupermarket.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    height: 60vh;
-    width: 100%;
-    margin-bottom: 20px;
-    background-color: #0000;
+        heigth:auto;
+	width:80vw;
+margin:auto;
+	
 }
 
 .sombra{
@@ -135,6 +160,7 @@ svg{
     border: none;
     background-color: transparent;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .login_button:hover{
@@ -226,6 +252,16 @@ svg{
     justify-content: space-around;
 
     text-align: center;
+}
+
+
+/* Registro */
+
+
+.legend {
+margin:0;
+text-align:center;
+
 }
 
 /* carrito */
@@ -403,11 +439,13 @@ svg{
     justify-content: center;
     height: 100vh;
     margin: 0;
+    
+
 }
 
 .fieldset_login{
     background-color: var(--color2);
-    width: 30vh;
+    width: 40vh;
     height: 40vh;
     border: var(--color1) solid 2px;
     border-radius:5px;
@@ -419,6 +457,7 @@ svg{
     align-items: center;
     justify-items:center;
     height: 100%;
+    
 }
 
 .form_login div{
@@ -436,6 +475,7 @@ svg{
 
 .form_login input{
     color: #000;
+	
 }
 
 .fieldset_login button{
@@ -446,6 +486,7 @@ svg{
 
 
 /* Admin */
+
 
 
 .admin_Conteiner{
