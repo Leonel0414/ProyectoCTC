@@ -1,9 +1,3 @@
-let usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
-let usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
-
-console.log("usuarioActivo",usuarioActivo);
-console.log("usuarioRegistrado",usuariosRegistrados);
-
 class Usuario{
     constructor(datos){
         this.nombre = datos.nombre || "indefenido"
@@ -16,7 +10,25 @@ class Usuario{
         this.id = usuariosRegistrados.length + 1
         this.rol = datos.rol || "usuario"
     }
+
+    validarContrasena(contrasena){
+        return this.contrasena === contrasena;
+    }
+
+    esAdmin(){
+        return this.rol === "admin";
+    }
 }
+
+let usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+usuariosRegistrados = usuariosRegistrados.map(usuario => new Usuario(usuario));
+
+let usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
+
+console.log("usuarioActivo",usuarioActivo);
+console.log("usuarioRegistrado",usuariosRegistrados);
+
+
 
 //admin
 let adminEncontrado = false;
@@ -74,23 +86,24 @@ if(botonIngresar){
             return;
         }
         
-        if(usuarioEncontrado){
-            if(contrasenaLogin !== usuarioEncontrado.contrasena){
-                mensajeErrorContrasenaLogin.textContent = "contrasena incorrecta";
-
+        console.log(usuarioEncontrado);
+        console.log(usuarioEncontrado instanceof Usuario);
+        console.log(typeof usuarioEncontrado.validarContrasena);
+        
+        if(!usuarioEncontrado.validarContrasena(contrasenaLogin)){
+            mensajeErrorContrasenaLogin.textContent = "contrasena incorrecta";
             return;
-            }
         }
         
         localStorage.setItem('usuarioActivo', JSON.stringify(usuarioEncontrado));
 
-        if(usuarioEncontrado.rol === "usuario"){
-                window.location.replace('index.html');
-                return;
-        }
-        else if(usuarioEncontrado.rol === "admin"){
+        if(usuarioEncontrado.esAdmin()){
                 window.location.replace('admin.html');
                 return;
+        }
+        else{
+            window.location.replace('index.html');
+            return;
         }
 
         formularioLogin.reset()
