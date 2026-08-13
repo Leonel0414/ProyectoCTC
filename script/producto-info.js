@@ -33,25 +33,28 @@ document.addEventListener("DOMContentLoaded", function(){
 	console.log(producto.nombre	);
 	
 	contenedorProducto.innerHTML +=
-	'<section class="infoProductoCard">' +
-		'<img src="' + producto.foto + '" alt="' + producto.nombre + '">' +
-
-		'<h2>' + producto.nombre + '</h2>' +
-
-		'<p>Precio: $' + producto.precio + '</p>' +
-
-		'<p>Información:' + producto.descripcion + '</p>' +
-
-		'<p>Categoría: ' + producto.categoria + '</p>' +
-
-		'<p>IVA: ' + producto.iva + '</p>' +
-
-		'<p>Stock: ' + producto.stock + '</p>' +
-
-		'<button class="boton" onclick="agregarCarrito(' + producto.nroIdentificador + ')">' +
+'<div class="card mx-auto" style="max-width: 540px;">'+
+ ' <div class="row g-0">' +
+    '<div class="col-md-4">' + 
+     ' <img src="' + producto.foto + '" class="img-fluid rounded-start" alt="' + producto.nombre + '">'+
+    '</div>'+
+    '<div class="col-md-8">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">' + producto.nombre + ' </h5>'+
+        '<p class="card-text">' + producto.descripcion + '</p>'+
+	'<p>Categoría: ' + producto.categoria + '</p>' +
+	'<p>Precio: $' + producto.precio + '</p>' +
+	'<p>IVA: ' + producto.iva + '</p>' +
+	'<button class="boton" onclick="agregarCarrito(' + producto.nroIdentificador + ')">' +
 			'Agregar al carrito' +
 		'</button>' +
-	'</section>';	
+      '</div>'+
+    '</div>'+
+  '</div>'+
+'</div>';
+
+
+	
 	
 	
 	
