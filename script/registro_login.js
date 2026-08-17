@@ -1,14 +1,14 @@
 class Usuario{
-    constructor(datos){
-        this.nombre = datos.nombre || "indefenido"
-        this.correo = datos.correo || "indefinido"
-        this.contrasena = datos.contrasena || "indefinido"
-        this.telefono = datos.telefono || "indefinido"
-        this.departamento = datos.departamento || "indefinido"
-        this.direccion = datos.direccion || "indefinido"
+    constructor(nombre,correo,contrasena, telefono, departamento,direccion,rol){
+        this.nombre = nombre || "indefenido";
+        this.correo = correo || "indefinido";
+        this.contrasena = contrasena || "indefinido";
+        this.telefono = telefono || "indefinido";
+        this.departamento = departamento || "indefinido";
+        this.direccion = direccion || "indefinido";
 
-        this.id = usuariosRegistrados.length + 1
-        this.rol = datos.rol || "usuario"
+        this.rol = rol || "usuario";
+        // this.activo = true;
     }
 
     validarContrasena(contrasena){
@@ -20,39 +20,83 @@ class Usuario{
     }
 }
 
-let usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
-usuariosRegistrados = usuariosRegistrados.map(usuario => new Usuario(usuario));
+class GestorUsuarios{
+    constructor(){
+        let usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
 
-let usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
+        this.usuarios = usuariosRegistrados.map(usuario => {
+            
+            let usuarioNuevo = new Usuario(
+            usuario.nombre,
+            usuario.correo,
+            usuario.contrasena,
+            usuario.telefono,
+            usuario.departamento,
+            usuario.direccion,
+            usuario.rol
+            )
+            usuarioNuevo.id = usuario.id
 
-console.log("usuarioActivo",usuarioActivo);
-console.log("usuarioRegistrado",usuariosRegistrados);
+            return usuarioNuevo;
+    })
 
+    }
+    
+    guardarUsuarios(){
+        localStorage.setItem('usuariosRegistrados',JSON.stringify(this.usuarios))
+    }
 
+    crearUsuario(usuario){
+        usuario.id = this.crearID()
+        this.usuarios.push(usuario);
+        this.guardarUsuarios();
+    }
 
-//admin
-let adminEncontrado = false;
+    buscarPorCorreo(correo){
+        return this.usuarios.find(usuario => usuario.correo === correo);
+    }
 
-for(let usuario of usuariosRegistrados){
-    if(usuario.rol === "admin"){
-        adminEncontrado = true;
+    buscarPorid(id){
+        return this.usuarios.find(usuario => usuario.id === id);
+    }
+
+    buscarPorNombre(nombre){
+        return this.usuarios.find(usuario => usuario.nombre === nombre);
+    }
+
+    crearID(){
+        return this.usuarios.length + 1
+    }
+
+    // desactivarUsuario(usuario){
+    //     usuario.activo = false;
+    //     this.guardarUsuarios()
+    // }
+
+    mostrarLista(){
+        console.log("listaUsuarios", this.usuarios) 
+    }
+
+    eliminarUsuario(){
+        this.usuarios.pop()
+        this.guardarUsuarios()
     }
 }
 
+const gestor = new GestorUsuarios();
+let usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
+
+gestor.mostrarLista()
+
+console.log("usuarioActivo",usuarioActivo);
+
+//admin
+let adminEncontrado = gestor.buscarPorCorreo('admin@');
+
 if(!adminEncontrado){
-        let administrador = new Usuario({
-            nombre:'administrador',
-            correo:"admin@",
-            contrasena:"1234",
-            rol:"admin"
-        })
-
-        usuariosRegistrados.push(administrador);
-        localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosRegistrados));
+        let administrador = new Usuario('admin','admin@','1234','','','','admin')
+        gestor.crearUsuario(administrador)
 }
-
-
-
 
 //login
 
@@ -71,21 +115,13 @@ if(botonIngresar){
         mensajeErrorCorreoLogin.textContent = '';
         mensajeErrorContrasenaLogin.textContent = '';
 
-        let usuarioEncontrado;
-
-        for(let usuario of usuariosRegistrados){
-
-            if(correoLogin === usuario.correo){
-                usuarioEncontrado = usuario;
-                console.log('usuarioEncontrado',usuarioEncontrado);
-            }
-        }
-            
+        let usuarioEncontrado = gestor.buscarPorCorreo(correoLogin);
+ 
         if(!usuarioEncontrado){
             mensajeErrorCorreoLogin.textContent = "Correo electronico no existe";
             return;
         }
-            
+ 
         if(!usuarioEncontrado.validarContrasena(contrasenaLogin)){
             mensajeErrorContrasenaLogin.textContent = "contrasena incorrecta";
             return;
@@ -102,7 +138,6 @@ if(botonIngresar){
             return;
         }
 
-        formularioLogin.reset()
     })
 } 
 
@@ -142,7 +177,6 @@ if(botonRegistrar){
             case direccionRegistro === "":
                 mensajeError.style = "color: white; font-weight:bold; text-align:center;"
                 mensajeError.textContent = "Completa todos lo campos correctamente";
-                divisorError.appendChild(mensajeError);
                 return
                 break;
         }
@@ -165,12 +199,10 @@ if(botonRegistrar){
             return;
         }
 
-        for(let usuario of usuariosRegistrados){
-            if(correoRegistro === usuario.correo){
-                mensajeErrorCorreoRegistro.style = "color: white; font-weight:bold; text-align:center;";
-                mensajeErrorCorreoRegistro.textContent = "Correo ya existente.";
-                return;
-            }
+        if(gestor.buscarPorCorreo(correoRegistro)){
+            mensajeErrorCorreoRegistro.style = "color: white; font-weight:bold; text-align:center;";
+            mensajeErrorCorreoRegistro.textContent = "Correo ya existente.";
+            return;
         }
 
         if(contrasenaRegistro !== confirmarContrasenaRegistro){
@@ -179,18 +211,10 @@ if(botonRegistrar){
             return;
         }
 
-        let usuario = new Usuario({
-            nombre:nombreRegistro,
-            correo:correoRegistro,
-            contrasena:contrasenaRegistro,
-            telefono:telefonoRegistro,
-            departamento:departamentoRegistro,
-            direccion:direccionRegistro
-        })
+        let usuario = new Usuario(nombreRegistro,correoRegistro,contrasenaRegistro,telefonoRegistro,departamentoRegistro,direccionRegistro)
 
-        usuariosRegistrados.push(usuario);
-        localStorage.setItem('usuariosRegistrados',JSON.stringify(usuariosRegistrados));
-        formularioRegistro.reset()
+        gestor.crearUsuario(usuario);
+        formularioRegistro.reset();
 	    window.location.href = 'login.html';
         })
 }
@@ -232,7 +256,5 @@ if(usuarioActivo && usuarioActivo.rol === 'admin'){
             window.location.replace('admin.html')
         })
         divisorHeaderIndex.prepend(botonAdministrador);
-        
-        
     }
  }
