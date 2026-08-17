@@ -1,4 +1,5 @@
-let productos = [];
+let gestor = new GestorProductos();
+
 let productosPredeterminados = [];
 
 let productosRegistrados = JSON.parse(localStorage.getItem("productosRegistrados"))
@@ -7,7 +8,6 @@ if(productosRegistrados){
 	
 	productos = productosRegistrados;
 
-}
 let identificacionSinMostrar = 0 ;
 let nrosIdentificacion = JSON.parse(localStorage.getItem("nrosIdentificacion"));
 
@@ -16,78 +16,76 @@ function contadorIdentificador(){
 	
 }
 
-let remera = {
-		nombre :'Remera',
-		stock : 10,
-		precio: 600,
-		foto : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZpePYg_wXBuFtbwHmCLK8J9WwWJ1hodtOPVcXNAqSWQ&s=10',
-		iva : 'Basico',
-		categoria :'ropa',
-		descripcion : 'La mejor remera del mundo',
-		nroIdentificador: identificacionSinMostrar++
-	};
+let remera = new Producto (
+		'Remera',
+		10,
+		600,
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZpePYg_wXBuFtbwHmCLK8J9WwWJ1hodtOPVcXNAqSWQ&s=10',
+		'Basico',
+		'ropa',
+		'La mejor remera del mundo'
+);
 	
 
 
-let heladera = {
-		nombre :'Heladera',
-		stock : 10,
-		precio: 25000,
-		foto : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHoRzrGqCF_jN_zcu83LSpWIFcYuqpAfDS4Q11BPHofQ&s',
-		iva : 'Minimo',
-		categoria : 'electrodomestico'		,
-		descripcion : 'La mejor heladera del mundo',
-		nroIdentificador: identificacionSinMostrar++
+let heladera = new Producto(
+		'Heladera',
+		10,
+		25000,
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHoRzrGqCF_jN_zcu83LSpWIFcYuqpAfDS4Q11BPHofQ&s',
+		'Minimo',
+		'electrodomestico'		,
+		'La mejor heladera del mundo',
 
-}	
+)
 	
-let ligthyear ={
-		nombre :'Buzz Lightyear',
-		stock : 10,
-		precio: 560,
-		foto :' https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1-XTE8QKmngh0TobclNpjGQmYP_pQafPqVNB9wd_7_A&s=10',
-		iva : 'Minimo',
-		categoria : 'juguetes' ,
-		descripcion : 'El mejor juguete del mundo',
-		nroIdentificador: identificacionSinMostrar++
+let ligthyear = new Producto(
+		'Buzz Lightyear',
+		10,
+		560,
+		' https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1-XTE8QKmngh0TobclNpjGQmYP_pQafPqVNB9wd_7_A&s=10',
+		'Minimo',
+		'juguetes' ,
+		'El mejor juguete del mundo',
 	
-}
+)
 
 
-let pantalon = {
-		nombre :'Pantalon',
-		stock : 10,
-		precio: 2500,
-		foto : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJv2nXSqo171gJP8ndkByfFetQZxzluIUS76ds0RfQiw&s',
-		iva : 'Basico',
-		categoria :'ropa',
-		descripcion : 'El mejor pantalon del mundo',
-		nroIdentificador: identificacionSinMostrar++
+let pantalon = new Producto(
+		'Pantalon',
+		10,
+		2500,
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJv2nXSqo171gJP8ndkByfFetQZxzluIUS76ds0RfQiw&s',
+		'Basico',
+		'ropa',
+		'El mejor pantalon del mundo',
 	
-}
+)
 productosPredeterminados = [remera,heladera,ligthyear,pantalon];
 
-if(!productos.some(producto => producto.nombre.includes('mera'))){
-    productos.push(remera);
-    identificacionSinMostrar++;
+if(!gestor.productos.some(producto => producto.nombre.includes('mera'))){
+   
+	gestor.agregarProducto(remera)
+	gestor.guardar();
 }
 
-if(!productos.some(producto => producto.nombre.includes('adera'))){
-    productos.push(heladera);
-    identificacionSinMostrar++;
+if(!gestor.productos.some(producto => producto.nombre.includes('adera'))){
+    
+	gestor.agregarProducto(heladera);
+	gestor.guardar();
 }
 
-if(!productos.some(producto => producto.nombre.includes('ear'))){
-    productos.push(ligthyear);
-    identificacionSinMostrar++;
+if(!gestor.productos.some(producto => producto.nombre.includes('ear'))){
+    
+	gestor.agregarProducto(ligthyear);
+	gestor.guardar();
 }
 
-if(!productos.some(producto => producto.nombre.includes('lon'))){
-    productos.push(pantalon);
-    identificacionSinMostrar++;
+if(!gestor.productos.some(producto => producto.nombre.includes('lon'))){
+   
+	gestor.agregarProducto(pantalon);
+	gestor.guardar()
 }
-localStorage.setItem('nrosIdentificacion', identificacionSinMostrar);
-localStorage.setItem('productosRegistrados',JSON.stringify(productos));
 
 
 function buscaElProducto(idProducto){
@@ -97,21 +95,21 @@ function buscaElProducto(idProducto){
 
 function mostrar(){
 	
-console.log(productos);	
+console.log(gestor.productos);	
 	
 }
 
-mostrarProductosIndex(productos)
+mostrarProductosIndex(gestor.productos)
 
 
 
-function mostrarProductosIndex(array){
+function mostrarProductosIndex(){
 
 
 	let ul = document.getElementById('ul_productos');
 	ul.innerHTML = '';
 
-	array.forEach(producto =>{
+	gestor.productos.forEach(producto =>{
 		if(producto.stock != 0){
 		let li = document.createElement('li')
 		li.className = 'productosIndex';
@@ -133,7 +131,7 @@ function inputBuscarProducto(){
 
 let buscadorProducto = document.getElementById('buscadorProducto').value.toLowerCase();
 
-	let resultado = productos.filter(producto => producto.nombre.toLowerCase().includes(buscadorProducto));
+	let resultado = gestor.productos.filter(producto => producto.nombre.toLowerCase().includes(buscadorProducto));
 	mostrarProductosIndex(resultado);
 	
 	
@@ -143,10 +141,10 @@ function selectorCategoria(){
 	let selectorCategoria = document.getElementById('selectorCategoria').value
 
 	if(selectorCategoria == 'sinCategoria'){
-		mostrarProductosIndex(productos)
+		mostrarProductosIndex(gestor.productos)
 		return
 	}
 
-	let resultado = productos.filter(producto => producto.categoria == selectorCategoria);
+	let resultado = gestor.productos.filter(producto => producto.categoria == selectorCategoria);
 	mostrarProductosIndex(resultado);
-}
+}}
