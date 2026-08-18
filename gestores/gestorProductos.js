@@ -1,4 +1,6 @@
-class GestorProductos {
+import { Producto } from '../script/producto.js';
+
+export class GestorProductos {
     constructor(){
         this.productos = [];
         let productosGuardados =
@@ -9,16 +11,16 @@ class GestorProductos {
             for (let i = 0; i < productosGuardados.length; i++) {
 
                 let producto = new Producto(
-                    productosGuardados[i].nombre,
-                    productosGuardados[i].stock,
-                    productosGuardados[i].precio,
-                    productosGuardados[i].foto,
-                    productosGuardados[i].iva,
-                    productosGuardados[i].categoria,
-                    productosGuardados[i].descripcion
+                    productosGuardados[i]._nombre,
+                    productosGuardados[i]._stock,
+                    productosGuardados[i]._precio,
+                    productosGuardados[i]._foto,
+                    productosGuardados[i]._iva,
+                    productosGuardados[i]._categoria,
+                    productosGuardados[i]._descripcion
                 );
                 producto.nroIdentificador =
-                    productosGuardados[i].nroIdentificador;
+                    productosGuardados[i]._nroIdentificador;
 
                 this.productos.push(producto);
             }}

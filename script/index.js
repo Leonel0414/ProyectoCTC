@@ -1,3 +1,7 @@
+import { GestorProductos } from '../gestores/gestorProductos.js';
+import { Producto } from './producto.js';
+import {agregarCarrito} from './carrito-de-compras.js'
+
 let gestor = new GestorProductos();
 
 let productosPredeterminados = [];
@@ -63,6 +67,8 @@ if(!gestor.productos.some(producto => producto.nombre.includes('mera'))){
    
 	gestor.agregarProducto(remera)
 	gestor.guardar();
+	console.log(remera);
+	console.log(remera.nroIdentificador);
 }
 
 if(!gestor.productos.some(producto => producto.nombre.includes('adera'))){
@@ -70,6 +76,7 @@ if(!gestor.productos.some(producto => producto.nombre.includes('adera'))){
 	gestor.agregarProducto(heladera);
 	gestor.guardar();
 }
+
 
 if(!gestor.productos.some(producto => producto.nombre.includes('ear'))){
     
@@ -90,54 +97,78 @@ function buscaElProducto(idProducto){
 }
 
 
-addEventListener('DOMContentLoaded',function(){
 
-	let cantidad = 0;
-
-	for(let i = 0;i<4;i++){
-		if(gestor.productos[i].stock != 0){
-			cantidad++
-			contenedorRecomendados.innerHTML += '<div class="producto_Recomendado">' + '<h3> ' +  gestor.productos[i].nombre  + '</h3>' + '<p>Precio: $' + gestor.productos[i].precio + '</p>' + '<p> Stock: ' + gestor.productos[i].stock + '</p>' + ' <p>IVA: ' + gestor.productos[i].iva + '</p> <img class = "img_productoRecomendado" src="'+ gestor.productos[i].foto +'"  id="imagenProductoRecomendado" > <div class="contenedorBotonesAdmin" ><button type="button" class="boton" onclick="agregarCarrito(' + gestor.productos[i].nroIdentificador + ' )">Agregar al carrito</button><button type="button" class="boton" onclick="buscaElProducto(' + gestor.productos[i].nroIdentificador + ')">Ver Producto</button></div></div>'
-		};
-
-		if(cantidad === 5){
-			return
-		}
-	}	
-})
-
-function mostrar(){
 	
 console.log(gestor.productos);	
 	
-}
+
 
 mostrarProductosIndex(gestor.productos)
 
+let botonCarrito = document.getElementById('botonCarrito');
+
+let botonProducto = document.getElementById('botonProducto');
 
 
 function mostrarProductosIndex(){
 
-
 	let ul = document.getElementById('ul_productos');
+
 	ul.innerHTML = '';
 
 	gestor.productos.forEach(producto =>{
+
 		if(producto.stock != 0){
-		let li = document.createElement('li')
-		li.className = 'productosIndex';
-		li.innerHTML = `
-			<img class = 'img_productosIndex' src= "${producto.foto}">
-			<p><span>Nombre del producto:</span><br>${producto.nombre}</p>
-			<p><span>Precio:</span><br>$${producto.precio}</p>
-			<p><span>Disponibles:</span><br>${producto.stock}</p>
-			<div>
-				<button type="button" class="boton" onclick="agregarCarrito(${producto.nroIdentificador})">Agregar al carrito</button><br>
-				<button type="button" class="boton" onclick="buscaElProducto(${producto.nroIdentificador})">Ver Producto</button>
-			</div>
-			`
-		ul.appendChild(li);
-	}})
+
+			let li = document.createElement('li');
+
+			li.className = 'productosIndex';
+
+			li.innerHTML = `
+				<img class = 'img_productosIndex' src= "${producto.foto}">
+
+				<p><span>Nombre del producto:</span><br>${producto.nombre}</p>
+
+				<p><span>Precio:</span><br>$${producto.precio}</p>
+
+				<p><span>Disponibles:</span><br>${producto.stock}</p>
+
+				<div>
+
+					<button type="button" class="boton botonCarrito">
+						Agregar al carrito
+					</button>
+
+					<button type="button" class="boton botonProducto">
+						Ver Producto
+					</button>
+
+				</div>
+			`;
+
+			let botonCarrito = li.querySelector('.botonCarrito');
+
+			let botonProducto = li.querySelector('.botonProducto');
+
+
+			botonCarrito.addEventListener('click', function(){
+
+				agregarCarrito(producto.nroIdentificador);
+
+			});
+
+
+			botonProducto.addEventListener('click', function(){
+
+				buscaElProducto(producto.nroIdentificador);
+
+			});
+
+
+			ul.appendChild(li);
+
+		}
+	})
 }
 
 function inputBuscarProducto(){

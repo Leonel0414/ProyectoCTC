@@ -1,3 +1,6 @@
+import { Producto } from './producto.js';
+import { GestorProductos } from '../gestores/gestorProductos.js';
+
 let gestor = new GestorProductos();
 
 
@@ -6,10 +9,37 @@ let compras = JSON.parse(localStorage.getItem("compras"));
 let contenedorProducto = document.getElementById('productos-tarjeta');
 let recibo = document.getElementById('recibo');
 
+document.addEventListener('DOMContentLoaded', function(){
+
+	let botonCrearProducto = document.getElementById('botonCrearProducto');
+
+	let botonModificarProducto = document.getElementById('botonModificarProducto');
+
+	let botonBuscarProducto = document.getElementById('botonBuscarProducto');
+
+	let botonBorrarProducto = document.getElementById('botonBorrarProducto');
 
 
+	botonCrearProducto.addEventListener('click', function(){
+		crearProducto();
+	})
 
 
+	botonModificarProducto.addEventListener('click',function(){
+		modificar();
+	})
+
+
+	botonBuscarProducto.addEventListener('click',function(){
+		buscarYMostrar();
+	})
+
+
+	botonBorrarProducto.addEventListener('click',function(){
+		borrarProducto();
+	})
+
+});
 
 function crearProducto(){
 	
