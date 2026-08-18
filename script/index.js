@@ -97,7 +97,7 @@ addEventListener('DOMContentLoaded',function(){
 	for(let i = 0;i<4;i++){
 		if(gestor.productos[i].stock != 0){
 			cantidad++
-			contenedorRecomendados.innerHTML += '<div class="producto_Recomendado">' + '<h3> ' +  productos[i].nombre  + '</h3>' + '<p>Precio: $' + productos[i].precio + '</p>' + '<p> Stock: ' + productos[i].stock + '</p>' + ' <p>IVA: ' + productos[i].iva + '</p> <img class = "img_productoRecomendado" src="'+ productos[i].foto +'"  id="imagenProductoRecomendado" > <div class="contenedorBotonesAdmin" ><button type="button" class="boton" onclick="agregarCarrito(' + productos[i].nroIdentificador + ' )">Agregar al carrito</button><button type="button" class="boton" onclick="buscaElProducto(' + productos[i].nroIdentificador + ')">Ver Producto</button></div></div>'
+			contenedorRecomendados.innerHTML += '<div class="producto_Recomendado">' + '<h3> ' +  gestor.productos[i].nombre  + '</h3>' + '<p>Precio: $' + gestor.productos[i].precio + '</p>' + '<p> Stock: ' + gestor.productos[i].stock + '</p>' + ' <p>IVA: ' + gestor.productos[i].iva + '</p> <img class = "img_productoRecomendado" src="'+ gestor.productos[i].foto +'"  id="imagenProductoRecomendado" > <div class="contenedorBotonesAdmin" ><button type="button" class="boton" onclick="agregarCarrito(' + gestor.productos[i].nroIdentificador + ' )">Agregar al carrito</button><button type="button" class="boton" onclick="buscaElProducto(' + gestor.productos[i].nroIdentificador + ')">Ver Producto</button></div></div>'
 		};
 
 		if(cantidad === 5){
