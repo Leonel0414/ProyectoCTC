@@ -2,7 +2,11 @@ let gestor = new GestorProductos();
 
 let productosPredeterminados = [];
 
-let contenedorRecomendados = document.getElementById('contenedorProductosRecomendados');
+let productosRegistrados = JSON.parse(localStorage.getItem("productosRegistrados"))
+
+if(productosRegistrados){
+	
+	productos = productosRegistrados;
 
 let identificacionSinMostrar = 0 ;
 let nrosIdentificacion = JSON.parse(localStorage.getItem("nrosIdentificacion"));
@@ -89,23 +93,6 @@ function buscaElProducto(idProducto){
 	window.location.href = "producto-info.html?id="+idProducto;
 }
 
-
-addEventListener('DOMContentLoaded',function(){
-
-	let cantidad = 0;
-
-	for(let i = 0;i<4;i++){
-		if(gestor.productos[i].stock != 0){
-			cantidad++
-			contenedorRecomendados.innerHTML += '<div class="producto_Recomendado">' + '<h3> ' +  productos[i].nombre  + '</h3>' + '<p>Precio: $' + productos[i].precio + '</p>' + '<p> Stock: ' + productos[i].stock + '</p>' + ' <p>IVA: ' + productos[i].iva + '</p> <img class = "img_productoRecomendado" src="'+ productos[i].foto +'"  id="imagenProductoRecomendado" > <div class="contenedorBotonesAdmin" ><button type="button" class="boton" onclick="agregarCarrito(' + productos[i].nroIdentificador + ' )">Agregar al carrito</button><button type="button" class="boton" onclick="buscaElProducto(' + productos[i].nroIdentificador + ')">Ver Producto</button></div></div>'
-		};
-
-		if(cantidad === 5){
-			return
-		}
-	}	
-})
-
 function mostrar(){
 	
 console.log(gestor.productos);	
@@ -160,4 +147,4 @@ function selectorCategoria(){
 
 	let resultado = gestor.productos.filter(producto => producto.categoria == selectorCategoria);
 	mostrarProductosIndex(resultado);
-}
+}}

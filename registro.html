@@ -9,9 +9,7 @@
     <title>Tienda tuya</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-</head
-<body>
-    <header>
+</head>
 
 <body class="body">
 
@@ -57,18 +55,22 @@
                 <div>
                     <label for="nombreRegistro">Nombre completo</label>
                     <input type="text" class='inputAdmin' id="nombreRegistro" minlength='2' required>
+                    <p id="mensajeErrorNombreRegistro"></p>
                 </div>
                 <div>
                     <label for="correoRegistro">Correo electronico</label>
                     <input type="email" class='inputAdmin' id="correoRegistro" required>
+                    <p id="mensajeErrorCorreoRegistro"></p>
                 </div>
                 <div>
                     <label for="contrasenaRegistro">Contrasena</label>
                     <input type="password" class='inputAdmin' minlength='2' id="contrasenaRegistro" required>
+                    <p id="mensajeErrorContrasenaRegistro"></p>
                 </div>
                 <div>
                     <label for="confirmacionContrasenaRegistro">Confirmar contrasena</label>
                     <input type="password" class='inputAdmin' minlength='2' id="confirmacionContrasenaRegistro" required>
+                    <p id="mensajeErrorConfirmarContrasenaRegistro"></p>
                 </div>
                 <div>
                     <label for="telefonoRegistro">Numero de telefono</label>
@@ -102,7 +104,7 @@
                     <label for="direccionRegistro">Direccion</label>
                     <input type="text" class='inputAdmin' minlength='6' id="direccionRegistro" required>
                 </div>
-                <div id="mensajeError"></div>
+                <p id="mensajeError"></p>
                 <div>
                     <button type="button" class='boton' id="btnRegistrar">Crear cuenta</button>
                 </div>
@@ -110,6 +112,6 @@
         </fieldset>
     </main>
     <footer></footer>
-    <script src="script/registro_login.js"></script>
+    <script src="script/registro_login.js" type="module"></script>
 </body>
 </html>

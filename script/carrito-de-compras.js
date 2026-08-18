@@ -1,16 +1,9 @@
-
-
 //storage
-
 productosRegistrados = JSON.parse(localStorage.getItem("productosRegistrados"));
 usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
 
 //CARRITO DE COMPRAS
-
 let listaCarrito = JSON.parse(localStorage.getItem('listaCarrito')) || [];
-
-
-
 
 console.log('listaCarrito:',listaCarrito);
 
@@ -39,7 +32,7 @@ function agregarCarrito(id){
     return
     }
     
-    for(let producto of productosRegistrados){
+    for(let producto of productosRegistrados){ 
         if(producto.nroIdentificador == id){
             listaCarrito.push({
                 ...producto,cantidad: 1
@@ -77,46 +70,98 @@ function mostrarCarrito(){
     localStorage.setItem('listaCarrito',JSON.stringify(listaCarrito))
 
     
-    resumen.innerHTML = '';
-    ul.innerHTML = '';
+    resumen.textContent = '';
+    ul.textContent = '';
     
     let total = 0;
     
     if(listaCarrito){
-		let TotalPrecio = 0;
-		let TotalIva = 0;
+		let totalPrecio = 0;
+		let totalIva = 0;
         listaCarrito.forEach(producto =>{
         
         let productoPrecio = multiplicarPrecio(producto.cantidad,producto.precio);
         let productoIva = multiplicarIva(producto.iva,productoPrecio);
-		TotalIva += productoIva;
-		TotalPrecio += productoPrecio;
+		totalIva += productoIva;
+		totalPrecio += productoPrecio;
 
         total += (productoPrecio + productoIva);
 
         let li = document.createElement('li');
         li.className = 'carrito_li'
-        li.innerHTML = `
-            <img src= "${producto.foto}">
-            <p>${producto.nombre} <span>Disponible: ${producto.stock}</span></p>
-            <div class = 'carrito_item-input'>
-                <button class='BtnCantidades' onclick='botonRestar(${producto.nroIdentificador})'>-</button>
-                <input type = 'number' class = 'input' value = '${producto.cantidad}' id = 'cantidadProducto${producto.nroIdentificador} readOnly'>
-                <button class='BtnCantidades' onclick='botonSumar(${producto.nroIdentificador}, ${producto.stock})'>+</button>
-            </div>
-            <p class = 'carrito_item-precio'>${producto.cantidad} x $${productoPrecio}</p>
-            <p>IVA ${producto.iva}: $${productoIva.toFixed(1)}</p>
-            <button type = "button" onClick = "borrarProductoCarrito(${producto.nroIdentificador})">X</button>
-            `;
-        ul.appendChild(li);
         
+        let productoImg = document.createElement('img');
+        productoImg.src = producto.foto;
+        
+
+        let productoNombre = document.createElement('p');
+        productoNombre.textContent = `${producto.nombre}`
+
+        let productoDisponible = document.createElement('span');
+        productoDisponible.textContent = `Disponible: ${producto.stock}`
+        productoNombre.append(' ',productoDisponible)
+
+        let divisorInputCarrito = document.createElement('div')
+        divisorInputCarrito.className = "carrito_item-input"
+        
+        let botonRestarCarrito = document.createElement("button");
+        botonRestarCarrito.className = "btnCantidades";
+        botonRestarCarrito.textContent = '-'
+        botonRestarCarrito.addEventListener('click', () =>{
+            botonRestar(producto.nroIdentificador);
+        })
+
+        let inputCarrito = document.createElement('input')
+        inputCarrito.className = "input";
+        inputCarrito.type = "number";
+        inputCarrito.value = `${producto.cantidad}`;
+        inputCarrito.id = `cantidadProducto${producto.nroIdentificador}`
+        
+        let botonSumarCarrito = document.createElement("button");
+        botonSumarCarrito.className = "btnCantidades";
+        botonSumarCarrito.textContent = '+';
+        botonSumarCarrito.addEventListener("click", ()=>{
+            botonSumar(producto.nroIdentificador,producto.stock);
+        });
+
+        divisorInputCarrito.append(botonRestarCarrito, inputCarrito, botonSumarCarrito)
+
+        let precioItem = document.createElement("p");
+        precioItem.className = 'carrito_item-precio';
+        precioItem.textContent = `${producto.cantidad} x $${producto.precio}`;
+
+        let ivaItem = document.createElement('p');
+        ivaItem.textContent = `${producto.iva}: $${productoIva.toFixed(1)}`;
+
+        let botonEliminar = document.createElement('button');
+        botonEliminar.type = 'button';
+        botonEliminar.textContent = 'X';
+        botonEliminar.addEventListener('click', ()=>{
+            borrarProductoCarrito(producto.nroIdentificador)
+        })
+        
+        li.append(productoImg, productoNombre, divisorInputCarrito, precioItem, ivaItem, botonEliminar)
+
+        ul.appendChild(li)
         })
         //resumen
         if(listaCarrito.length == 0){
-            ul.innerHTML ='<center><p style = "color:white; text-transform: uppercase; font-weight:bold; margin: 10px 0;">Carrito vacio</p></center>';
+            let mensajeCarrito = document.createElement('p')
+            mensajeCarrito.style = "text-align: center; color:white; text-transform: uppercase; font-weight:bold; margin: 10px 0;"
+            mensajeCarrito.textContent ='Carrito vacio';
+            ul.append(mensajeCarrito);
         }
         else{
-            resumen.innerHTML = '<p>SubTotal: $' + TotalPrecio + ' + IVA: $' + TotalIva.toFixed(1) + '  = <br><br>TOTAL: $' + total.toFixed(1) + ' </p><button onclick="botonComprar()">Comprar</button>'
+            let totalResumen = document.createElement('p');
+            totalResumen.textContent = `SubTotal: $${totalPrecio}\n + IVA:${totalIva.toFixed(1)} =\n\nTOTAL: $${total.toFixed(1)}`
+            
+            let botonComprarCarrito = document.createElement('button');
+            botonComprarCarrito.textContent = 'COMPRAR'
+            botonComprarCarrito.addEventListener('click', () =>{
+                botonComprar();
+            })
+            
+            resumen.append(totalResumen,botonComprarCarrito) 
         }
     }
 }
@@ -150,7 +195,7 @@ function botonSumar(id, stock){
                 producto.cantidad++
                 localStorage.setItem('listaCarrito',JSON.stringify(listaCarrito));
 
-	            document.getElementById('carritoLista').innerHTML = '';
+	            document.getElementById('carritoLista').textContent = '';
                 mostrarCarrito()
             }   
         }
@@ -164,7 +209,7 @@ function botonRestar(id){
                 producto.cantidad--
                 localStorage.setItem('listaCarrito',JSON.stringify(listaCarrito));
 
-	            document.getElementById('carritoLista').innerHTML = '';
+	            document.getElementById('carritoLista').textContent = '';
                 mostrarCarrito()
             }
         }
