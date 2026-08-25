@@ -157,7 +157,6 @@ function mostrarProductosIndex(){
 
 			});
 
-
 			botonProducto.addEventListener('click', function(){
 
 				buscaElProducto(producto.nroIdentificador);
