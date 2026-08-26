@@ -110,13 +110,13 @@ let botonCarrito = document.getElementById('botonCarrito');
 let botonProducto = document.getElementById('botonProducto');
 
 
-function mostrarProductosIndex(){
+function mostrarProductosIndex(productos){
 
 	let ul = document.getElementById('ul_productos');
 
 	ul.innerHTML = '';
 
-	gestor.productos.forEach(producto =>{
+	productos.forEach(producto =>{
 
 		if(producto.stock != 0){
 
@@ -169,6 +169,11 @@ function mostrarProductosIndex(){
 		}
 	})
 }
+let inputBuscarProductoHTML  = document.getElementById('buscadorProducto');
+let inputCategoria = document.getElementById('selectorCategoria');
+
+inputBuscarProductoHTML.addEventListener('input', inputBuscarProducto);
+inputCategoria.addEventListener('change',selectorCategoria);
 
 function inputBuscarProducto(){
 
