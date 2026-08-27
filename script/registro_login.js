@@ -1,66 +1,25 @@
-class Usuario{
-    constructor(datos){
-        this.nombre = datos.nombre || "indefenido"
-        this.correo = datos.correo || "indefinido"
-        this.contrasena = datos.contrasena || "indefinido"
-        this.telefono = datos.telefono || "indefinido"
-        this.departamento = datos.departamento || "indefinido"
-        this.direccion = datos.direccion || "indefinido"
+import gestores from '../gestores/gestorUsuarios.js';
+import { calcularEdad } from '../api/digi-dates.js';
 
-        this.id = usuariosRegistrados.length + 1
-        this.rol = datos.rol || "usuario"
-    }
-
-    validarContrasena(contrasena){
-        return this.contrasena === contrasena;
-    }
-
-    esAdmin(){
-        return this.rol === "admin";
-    }
-}
-
-let usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
-usuariosRegistrados = usuariosRegistrados.map(usuario => new Usuario(usuario));
-
+const gestor = new gestores.GestorUsuarios();
 let usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
 
+gestor.mostrarLista()
 console.log("usuarioActivo",usuarioActivo);
-console.log("usuarioRegistrado",usuariosRegistrados);
-
-
 
 //admin
-let adminEncontrado = false;
-
-for(let usuario of usuariosRegistrados){
-    if(usuario.rol === "admin"){
-        adminEncontrado = true;
-    }
-}
+let adminEncontrado = gestor.buscarPorCorreo('admin@');
 
 if(!adminEncontrado){
-        let administrador = new Usuario({
-            nombre:'administrador',
-            correo:"admin@",
-            contrasena:"1234",
-            rol:"admin"
-        })
-
-        usuariosRegistrados.push(administrador);
-        localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosRegistrados));
+        let administrador = new gestores.Usuario('admin','admin@','1234','','','','admin')
+        gestor.crearUsuario(administrador)
 }
-
-
-
 
 //login
 
 let botonIngresar = document.getElementById('btnIngresar')
 if(botonIngresar){
     botonIngresar.addEventListener("click", ()=>{
-
-        let formularioLogin = document.getElementById('formLogin')
 
         let correoLogin = document.getElementById('correoLogin').value;
         let contrasenaLogin = document.getElementById('contrasenaLogin').value;
@@ -71,25 +30,13 @@ if(botonIngresar){
         mensajeErrorCorreoLogin.textContent = '';
         mensajeErrorContrasenaLogin.textContent = '';
 
-        let usuarioEncontrado;
-
-        for(let usuario of usuariosRegistrados){
-
-            if(correoLogin === usuario.correo){
-                usuarioEncontrado = usuario;
-                console.log('usuarioEncontrado',usuarioEncontrado);
-            }
-        }
-            
+        let usuarioEncontrado = gestor.buscarPorCorreo(correoLogin);
+ 
         if(!usuarioEncontrado){
             mensajeErrorCorreoLogin.textContent = "Correo electronico no existe";
             return;
         }
-        
-        console.log(usuarioEncontrado);
-        console.log(usuarioEncontrado instanceof Usuario);
-        console.log(typeof usuarioEncontrado.validarContrasena);
-        
+ 
         if(!usuarioEncontrado.validarContrasena(contrasenaLogin)){
             mensajeErrorContrasenaLogin.textContent = "contrasena incorrecta";
             return;
@@ -106,7 +53,6 @@ if(botonIngresar){
             return;
         }
 
-        formularioLogin.reset()
     })
 } 
 
@@ -116,35 +62,28 @@ let botonRegistrar = document.getElementById('btnRegistrar');
 if(botonRegistrar){
     botonRegistrar.addEventListener("click", () => {
         
-        let formularioRegistro = document.getElementById('formRegistro')
+        let formularioRegistro = document.getElementById('formRegistro');
+        let mensajeErrorNombreRegistro = document.getElementById("mensajeErrorNombreRegistro");
+        let mensajeErrorCorreoRegistro = document.getElementById("mensajeErrorCorreoRegistro");
+        let mensajeErrorContrasenaRegistro = document.getElementById("mensajeErrorContrasenaRegistro");
+        let mensajeErrorConfirmarContrasenaRegistro = document.getElementById("mensajeErrorConfirmarContrasenaRegistro");
+        mensajeErrorNombreRegistro.textContent = "";
+        mensajeErrorContrasenaRegistro.textContent = "";
+        mensajeErrorCorreoRegistro.textContent = "";
+        mensajeErrorConfirmarContrasenaRegistro.textContent = "";
 
         let nombreRegistro = document.getElementById('nombreRegistro').value;
-if(nombreRegistro.length < 3){
-alert('ERROR - Ingrese un nombre valido!');
-return;
-}
         let correoRegistro = document.getElementById('correoRegistro').value;
-if(correoRegistro.length < 3){
-alert('ERROR - Ingrese un correo valido!');
-
-return;
-}
         let contrasenaRegistro = document.getElementById('contrasenaRegistro').value;
-if(contrasenaRegistro.length < 7){
-alert('ERROR - Ingrese una contrasena de 8 digitos o mas!');
-
-return;
-}
         let confirmarContrasenaRegistro = document.getElementById('confirmacionContrasenaRegistro').value;
         let telefonoRegistro = document.getElementById('telefonoRegistro').value;
         let departamentoRegistro = document.getElementById('departamentoRegistro').value;
+        let fechaNacimientoRegistro = document.getElementById('fechaNacimientoRegistro').value;
         let direccionRegistro = document.getElementById('direccionRegistro').value;
 
-        let divisorError = document.getElementById('mensajeError');
-        divisorError.textContent = ""
+        let mensajeError = document.getElementById('mensajeError');
+        mensajeError.textContent = ""
         
-        let mensajeError = document.createElement('p');
-
         switch(true){
             case nombreRegistro === "":
             case correoRegistro === "":
@@ -152,43 +91,64 @@ return;
             case confirmarContrasenaRegistro === "":
             case departamentoRegistro === "":
             case direccionRegistro === "":
+                mensajeError.style = "color: white; font-weight:bold; text-align:center;"
                 mensajeError.textContent = "Completa todos lo campos correctamente";
-                divisorError.appendChild(mensajeError);
                 return
                 break;
         }
 
-        for(let usuario of usuariosRegistrados){
-            if(correoRegistro === usuario.correo){
-                mensajeError.textContent = "Correo ya existente.";
-                divisorError.appendChild(mensajeError);
-                return;
-            }
+        if(nombreRegistro.length <= 3){
+            mensajeErrorNombreRegistro.style = "color: white; font-weight:bold; text-align:center;";
+            mensajeErrorNombreRegistro.textContent = "ERROR - Ingrese un nombre valido!";
+            return;
         }
-
-        if(contrasenaRegistro !== confirmarContrasenaRegistro){
-            mensajeError.textContent = "confirmacion de contrasena diferente. Escribe correctamente la contrasena."
-            divisorError.appendChild(mensajeError);
+                
+        if(correoRegistro.length <= 3){
+            mensajeErrorCorreoRegistro.style = "color: white; font-weight:bold; text-align:center;";
+            mensajeErrorCorreoRegistro.textContent = "ERROR - Ingrese un correo valido!";
+            return;
+        }
+                
+        if(contrasenaRegistro.length <= 7){
+            mensajeErrorContrasenaRegistro.style = "color: white; font-weight:bold;";
+            mensajeErrorContrasenaRegistro.textContent = "ERROR - Ingrese una contrasena de 8 digitos o mas!";
             return;
         }
 
-        let usuario = new Usuario({
-            nombre:nombreRegistro,
-            correo:correoRegistro,
-            contrasena:contrasenaRegistro,
-            telefono:telefonoRegistro,
-            departamento:departamentoRegistro,
-            direccion:direccionRegistro
+        if(gestor.buscarPorCorreo(correoRegistro)){
+            mensajeErrorCorreoRegistro.style = "color: white; font-weight:bold; text-align:center;";
+            mensajeErrorCorreoRegistro.textContent = "Correo ya existente.";
+            return;
+        }
+
+        if(contrasenaRegistro !== confirmarContrasenaRegistro){
+            mensajeErrorConfirmarContrasenaRegistro.style = "color: white; font-weight:bold;"
+            mensajeErrorConfirmarContrasenaRegistro.textContent = "ERROR - confirmacion de contrasena equivocada."
+            return;
+        }
+
+        if(!calcularEdad(fechaNacimientoRegistro)){
+            console.log('no es mayor de edad')
+            console.log(fechaNacimientoRegistro)
+            return;
+        }
+
+        let usuario = new gestores.Usuario(nombreRegistro,
+            correoRegistro,
+            contrasenaRegistro,
+            telefonoRegistro,
+            departamentoRegistro,
+            fechaNacimientoRegistro,
+            direccionRegistro
+        );
+
+        gestor.crearUsuario(usuario);
+
+        formularioRegistro.reset();
+	    window.location.href = 'login.html';
+        
         })
-
-        usuariosRegistrados.push(usuario);
-        localStorage.setItem('usuariosRegistrados',JSON.stringify(usuariosRegistrados));
-        formularioRegistro.reset()
-	alert('Bienvenido!');
-	window.location.href = 'login.html';
-    })
-}
-
+    }
 
 //logout
 let botonLogOut = document.getElementById('login_log-out');
@@ -213,18 +173,28 @@ if(botonLogOut){
 }
 
 if(usuarioActivo && usuarioActivo.rol === 'admin'){
-    let divisorHeaderIndex = document.getElementById('divisorHeaderIndex')
+    let divisorHeaderIndex = document.getElementById('divisorHeaderIndex');
     
     if(divisorHeaderIndex){
         let botonAdministrador = document.createElement('button');
     
         botonAdministrador.className = 'login_button';
         botonAdministrador.textContent = 'admin';
+        botonAdministrador.type = 'button'
         botonAdministrador.style = "margin-right: 10px"
-        divisorHeaderIndex.prepend(botonAdministrador);
-        
         botonAdministrador.addEventListener('click',() =>{
             window.location.replace('admin.html')
         })
+        divisorHeaderIndex.prepend(botonAdministrador);
     }
  }
+
+ //prueba
+
+let botonEliminar = document.getElementById('btnEliminar')
+let correoEliminar = document.getElementById('correoEliminar').value
+
+ botonEliminar.addEventListener('click', ()=>{
+    console.log('usuario')
+    gestor.eliminarUsuario(correoEliminar)
+ })
