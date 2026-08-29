@@ -1,5 +1,6 @@
 import gestores from '../gestores/gestorUsuarios.js';
 import { calcularEdad } from '../api/digi-dates.js';
+import { informacionEmail } from '../api/email-validation.js';
 
 const gestor = new gestores.GestorUsuarios();
 let usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
@@ -60,13 +61,14 @@ if(botonIngresar){
 
 let botonRegistrar = document.getElementById('btnRegistrar');
 if(botonRegistrar){
-    botonRegistrar.addEventListener("click", () => {
+    botonRegistrar.addEventListener("click", async () => {
         
         let formularioRegistro = document.getElementById('formRegistro');
         let mensajeErrorNombreRegistro = document.getElementById("mensajeErrorNombreRegistro");
         let mensajeErrorCorreoRegistro = document.getElementById("mensajeErrorCorreoRegistro");
         let mensajeErrorContrasenaRegistro = document.getElementById("mensajeErrorContrasenaRegistro");
         let mensajeErrorConfirmarContrasenaRegistro = document.getElementById("mensajeErrorConfirmarContrasenaRegistro");
+        let mensajeErrorFechaNacimientoRegistro = document.getElementById('mensajeErrorFechaNacimientoRegistro');
         mensajeErrorNombreRegistro.textContent = "";
         mensajeErrorContrasenaRegistro.textContent = "";
         mensajeErrorCorreoRegistro.textContent = "";
@@ -93,8 +95,7 @@ if(botonRegistrar){
             case direccionRegistro === "":
                 mensajeError.style = "color: white; font-weight:bold; text-align:center;"
                 mensajeError.textContent = "Completa todos lo campos correctamente";
-                return
-                break;
+                return;
         }
 
         if(nombreRegistro.length <= 3){
@@ -127,11 +128,29 @@ if(botonRegistrar){
             return;
         }
 
-        if(!calcularEdad(fechaNacimientoRegistro)){
-            console.log('no es mayor de edad')
-            console.log(fechaNacimientoRegistro)
+        const esMayor = await calcularEdad(fechaNacimientoRegistro);
+
+        if(!esMayor){
+            mensajeErrorFechaNacimientoRegistro.style = "color: white; font-weight:bold; text-align:center;"
+            mensajeErrorFechaNacimientoRegistro.textContent = 'Debe ser mayor para tener una cuenta';
             return;
         }
+
+        const respuestaValidacionApi = await informacionEmail(correoRegistro);
+        
+        if(respuestaValidacionApi.message === "Validation error"){
+            mensajeErrorCorreoRegistro.style = "color: white; font-weight:bold; text-align:center;";
+            mensajeErrorCorreoRegistro.textContent = 'No se ha podido verificar su correo. Intentelo de nuevo.';
+            return;
+        }
+
+        if(respuestaValidacionApi.disposable === true){
+            mensajeErrorCorreoRegistro.style = "color: white; font-weight:bold; text-align:center;";
+            mensajeErrorCorreoRegistro.textContent = 'No se permiten correo temporales o desechables';
+            return;
+        }
+
+        console.log(respuestaValidacionApi)
 
         let usuario = new gestores.Usuario(nombreRegistro,
             correoRegistro,
@@ -146,7 +165,6 @@ if(botonRegistrar){
 
         formularioRegistro.reset();
 	    window.location.href = 'login.html';
-        
         })
     }
 
@@ -197,4 +215,5 @@ let correoEliminar = document.getElementById('correoEliminar').value
  botonEliminar.addEventListener('click', ()=>{
     console.log('usuario')
     gestor.eliminarUsuario(correoEliminar)
+    window.location.reload()
  })

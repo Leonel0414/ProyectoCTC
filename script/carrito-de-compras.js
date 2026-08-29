@@ -1,6 +1,4 @@
 //storage
-
-
 import { GestorProductos } from '../gestores/gestorProductos.js';
 import { Producto } from './producto.js';
 
