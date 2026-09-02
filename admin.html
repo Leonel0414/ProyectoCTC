@@ -65,6 +65,7 @@
 						<label for='ivaProducto'>Seleccione el tipo de iva: </label><br>
 						<select class='inputAdmin' id='ivaProducto'>
 							<option value=''>Seleccione:</option>
+							<option value='Extento'>Extento</option>
 							<option value='Minimo'>Minimo</option>
 							<option value='Basico'>Basico</option>
 						</select>
@@ -86,7 +87,7 @@
 					</div>
 					
 					<div>
-						<button type='button' class='boton' onclick='crearProducto()'>CREAR</button>
+						<button type='button' class='boton' id="botonCrearProducto">CREAR</button>
 
 					</div>
 					<h4>PRODUCTOS</h4>
@@ -109,8 +110,8 @@
 						<div>
 							<label for='productoABuscar'>Nombre de producto a modificar:</label><br>
 							<input  type='text'class='input' id='productoABuscar' name='productoaBuscar' >
-							<button type='button' class='boton' onclick='buscarYMostrar()'>Buscar</button> 
-							<button type='button' class='boton' onclick='borrarProducto()'>Borrar Producto</button> 	</br> 
+							<button type='button' id="botonBuscarProducto" class='boton' >Buscar</button> 
+							<button type='button'  id='botonBorrarProducto' class='boton' >Borrar Producto</button> 	</br> 
 
 						
 						</div>
@@ -136,6 +137,7 @@
 							<label for='ivaProducto'>Seleccione el tipo de iva: </label><br>
 							<select class='inputAdmin' id='ivaProductoAModificar'>
 								<option value=''>Seleccione:</option>
+								<option value='Extento'>Extento</option>
 								<option value='Minimo'>Minimo</option>
 								<option value='Basico'>Basico</option>
 							</select>
@@ -158,7 +160,7 @@
 							
 						</div>
 						<div>
-							<button type='button' class='boton' onclick='modificar()'>Modificar</button>
+							<button type='button' class='boton' id="botonModificarProducto" >Modificar</button>
 							
 						</div>
 				
@@ -174,8 +176,12 @@
 	<div id='recibo'></div>
 	</footer>
 
+<<<<<<< HEAD
 	<script src='./script/producto.js'></script>
 	<script src='./gestores/gestorProductos.js'></script>
 	<script src='./script/admin.js'></script>
 	<script src='./script/registro_login.js' type="module"></script>
+=======
+	<script type="module" src="./script/admin.js"></script>
+>>>>>>> Admin-a-clases
 </html>

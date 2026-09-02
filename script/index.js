@@ -1,3 +1,7 @@
+import { GestorProductos } from '../gestores/gestorProductos.js';
+import { Producto } from './producto.js';
+import {agregarCarrito} from './carrito-de-compras.js'
+
 let gestor = new GestorProductos();
 
 let productosPredeterminados = [];
@@ -16,10 +20,35 @@ function contadorIdentificador(){
 	
 }
 
+export async function obtenerDatos(){
+    try{
+        let respuesta = await fetch('https://v6.exchangerate-api.com/v6/0f10c6deb322b144205b4d48/latest/USD'); 
+ 
+        if(!respuesta.ok){ 
+            throw new Error('No se pudo conectar con la API'); 
+ 
+        } 
+        let datos = await respuesta.json(); 
+		
+		let euro = datos.conversion_rates.EUR;
+		let peso = datos.conversion_rates.UYU;
+
+		localStorage.setItem('Euro',JSON.stringify(euro));
+		localStorage.setItem('Peso',JSON.stringify(peso));
+
+    } 
+    catch(error){ 
+        console.error('Error: ',error); 
+        return null;
+    } 
+} 
+ 
+obtenerDatos(); 
+
 let remera = new Producto (
 		'Remera',
 		10,
-		600,
+		15,
 		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZpePYg_wXBuFtbwHmCLK8J9WwWJ1hodtOPVcXNAqSWQ&s=10',
 		'Basico',
 		'ropa',
@@ -31,7 +60,7 @@ let remera = new Producto (
 let heladera = new Producto(
 		'Heladera',
 		10,
-		25000,
+		500,
 		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHoRzrGqCF_jN_zcu83LSpWIFcYuqpAfDS4Q11BPHofQ&s',
 		'Minimo',
 		'electrodomestico'		,
@@ -42,7 +71,7 @@ let heladera = new Producto(
 let ligthyear = new Producto(
 		'Buzz Lightyear',
 		10,
-		560,
+		30,
 		' https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1-XTE8QKmngh0TobclNpjGQmYP_pQafPqVNB9wd_7_A&s=10',
 		'Minimo',
 		'juguetes' ,
@@ -54,7 +83,7 @@ let ligthyear = new Producto(
 let pantalon = new Producto(
 		'Pantalon',
 		10,
-		2500,
+		50,
 		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJv2nXSqo171gJP8ndkByfFetQZxzluIUS76ds0RfQiw&s',
 		'Basico',
 		'ropa',
@@ -67,6 +96,8 @@ if(!gestor.productos.some(producto => producto.nombre.includes('mera'))){
    
 	gestor.agregarProducto(remera)
 	gestor.guardar();
+	console.log(remera);
+	console.log(remera.nroIdentificador);
 }
 
 if(!gestor.productos.some(producto => producto.nombre.includes('adera'))){
@@ -74,6 +105,7 @@ if(!gestor.productos.some(producto => producto.nombre.includes('adera'))){
 	gestor.agregarProducto(heladera);
 	gestor.guardar();
 }
+
 
 if(!gestor.productos.some(producto => producto.nombre.includes('ear'))){
     
@@ -93,39 +125,88 @@ function buscaElProducto(idProducto){
 	window.location.href = "producto-info.html?id="+idProducto;
 }
 
+<<<<<<< HEAD
 function mostrar(){
+=======
+
+
+>>>>>>> Admin-a-clases
 	
 console.log(gestor.productos);	
 	
-}
+
 
 mostrarProductosIndex(gestor.productos)
 
+let botonCarrito = document.getElementById('botonCarrito');
+
+let botonProducto = document.getElementById('botonProducto');
 
 
-function mostrarProductosIndex(){
-
+function mostrarProductosIndex(productos){
 
 	let ul = document.getElementById('ul_productos');
+
 	ul.innerHTML = '';
 
-	gestor.productos.forEach(producto =>{
+	productos.forEach(producto =>{
+
 		if(producto.stock != 0){
-		let li = document.createElement('li')
-		li.className = 'productosIndex';
-		li.innerHTML = `
-			<img class = 'img_productosIndex' src= "${producto.foto}">
-			<p><span>Nombre del producto:</span><br>${producto.nombre}</p>
-			<p><span>Precio:</span><br>$${producto.precio}</p>
-			<p><span>Disponibles:</span><br>${producto.stock}</p>
-			<div>
-				<button type="button" class="boton" onclick="agregarCarrito(${producto.nroIdentificador})">Agregar al carrito</button><br>
-				<button type="button" class="boton" onclick="buscaElProducto(${producto.nroIdentificador})">Ver Producto</button>
-			</div>
-			`
-		ul.appendChild(li);
-	}})
+
+			let li = document.createElement('li');
+
+			li.className = 'productosIndex';
+
+			li.innerHTML = `
+				<img class = 'img_productosIndex' src= "${producto.foto}">
+
+				<p><span>Nombre del producto:</span><br>${producto.nombre}</p>
+
+				<p><span>Precio:</span><br>$${producto.precio}</p>
+
+				<p><span>Disponibles:</span><br>${producto.stock}</p>
+
+				<div>
+
+					<button type="button" class="boton botonCarrito">
+						Agregar al carrito
+					</button>
+
+					<button type="button" class="boton botonProducto">
+						Ver Producto
+					</button>
+
+				</div>
+			`;
+
+			let botonCarrito = li.querySelector('.botonCarrito');
+
+			let botonProducto = li.querySelector('.botonProducto');
+
+
+			botonCarrito.addEventListener('click', function(){
+
+				agregarCarrito(producto.nroIdentificador);
+
+			});
+
+			botonProducto.addEventListener('click', function(){
+
+				buscaElProducto(producto.nroIdentificador);
+
+			});
+
+
+			ul.appendChild(li);
+
+		}
+	})
 }
+let inputBuscarProductoHTML  = document.getElementById('buscadorProducto');
+let inputCategoria = document.getElementById('selectorCategoria');
+
+inputBuscarProductoHTML.addEventListener('input', inputBuscarProducto);
+inputCategoria.addEventListener('change',selectorCategoria);
 
 function inputBuscarProducto(){
 
