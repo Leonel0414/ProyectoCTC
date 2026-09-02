@@ -1,6 +1,7 @@
 import { GestorProductos } from '../gestores/gestorProductos.js';
 import { Producto } from './producto.js';
-import {agregarCarrito} from './carrito-de-compras.js'
+import {agregarCarrito} from './carrito-de-compras.js';
+
 
 let gestor = new GestorProductos();
 

@@ -1,4 +1,4 @@
-class Usuario{
+ export class Usuario{
     constructor(nombre,correo,contrasena, telefono, departamento,direccion,rol){
         this.nombre = nombre || "indefenido";
         this.correo = correo || "indefinido";
@@ -20,7 +20,7 @@ class Usuario{
     }
 }
 
-class GestorUsuarios{
+export class GestorUsuarios{
     constructor(){
         let usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
 
