@@ -21,31 +21,6 @@ function contadorIdentificador(){
 	
 }
 
-async function obtenerDatos(){
-    try{
-        let respuesta = await fetch('https://v6.exchangerate-api.com/v6/0f10c6deb322b144205b4d48/latest/USD'); 
- 
-        if(!respuesta.ok){ 
-            throw new Error('No se pudo conectar con la API'); 
- 
-        } 
-        let datos = await respuesta.json(); 
-		
-		let euro = datos.conversion_rates.EUR;
-		let peso = datos.conversion_rates.UYU;
-
-		localStorage.setItem('Euro',JSON.stringify(euro));
-		localStorage.setItem('Peso',JSON.stringify(peso));
-
-    } 
-    catch(error){ 
-        console.error('Error: ',error); 
-        return null;
-    } 
-} 
- 
-obtenerDatos(); 
-
 let remera = new Producto (
 		'Remera',
 		10,

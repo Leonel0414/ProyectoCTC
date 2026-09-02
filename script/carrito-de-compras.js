@@ -3,10 +3,25 @@ import { GestorProductos } from '../gestores/gestorProductos.js';
 import { Producto } from './producto.js';
 //API MONeda
 
-let euro = JSON.parse(localStorage.getItem('Euro'));
-let peso = JSON.parse(localStorage.getItem('Peso'));
-
-console.log(euro);
+async function obtenerDatos(){
+    try{
+        let respuesta = await fetch('https://v6.exchangerate-api.com/v6/0f10c6deb322b144205b4d48/latest/USD'); 
+ 
+        if(!respuesta.ok){ 
+            throw new Error('No se pudo conectar con la API'); 
+ 
+        } 
+        let datos = await respuesta.json(); 
+        return datos.conversion_rates;
+ 
+    } 
+    catch(error){ 
+        console.error('Error: ',error); 
+        return null;
+    } 
+} 
+ 
+obtenerDatos(); 
  
 let gestorCarrito = new GestorProductos; 
 let productosRegistrados = gestorCarrito.productos; 
@@ -104,6 +119,7 @@ if(ul){
 } 
  
 async function mostrarCarrito(){
+    let tasas = await obtenerDatos();
 
     let resumen = document.getElementById('resumenCarrito'); 
  
@@ -209,15 +225,15 @@ async function mostrarCarrito(){
                 }
 
                 else if(selectMoneda.value == 'EUR'){
-                    if(euro){
-                        let precioEuro = total * euro;
+                    if(tasas){
+                        let precioEuro = total * tasas.EUR;
                         precioCompra.textContent = `TOTAL: €${precioEuro.toFixed(2)} Euros`;
                     }
                 }
 
                 else if(selectMoneda.value == 'UYU'){
-                    if(peso){
-                        let precioUyu = total * peso;
+                    if(tasas){
+                        let precioUyu = total * tasas.UYU;
                         precioCompra.textContent = `TOTAL: $${precioUyu.toFixed(2)} Pesos uruguayos`;
                     }
                 }
