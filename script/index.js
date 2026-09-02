@@ -10,7 +10,7 @@ let productosRegistrados = JSON.parse(localStorage.getItem("productosRegistrados
 
 if(productosRegistrados){
 	
-	productos = productosRegistrados;
+	let productos = productosRegistrados;
 
 let identificacionSinMostrar = 0 ;
 let nrosIdentificacion = JSON.parse(localStorage.getItem("nrosIdentificacion"));
@@ -20,7 +20,7 @@ function contadorIdentificador(){
 	
 }
 
-export async function obtenerDatos(){
+async function obtenerDatos(){
     try{
         let respuesta = await fetch('https://v6.exchangerate-api.com/v6/0f10c6deb322b144205b4d48/latest/USD'); 
  
@@ -125,12 +125,7 @@ function buscaElProducto(idProducto){
 	window.location.href = "producto-info.html?id="+idProducto;
 }
 
-<<<<<<< HEAD
-function mostrar(){
-=======
 
-
->>>>>>> Admin-a-clases
 	
 console.log(gestor.productos);	
 	
