@@ -24,7 +24,7 @@ function contadorIdentificador(){
 let remera = new Producto (
 		'Remera',
 		10,
-		15,
+		600,
 		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZpePYg_wXBuFtbwHmCLK8J9WwWJ1hodtOPVcXNAqSWQ&s=10',
 		'Basico',
 		'ropa',
@@ -36,7 +36,7 @@ let remera = new Producto (
 let heladera = new Producto(
 		'Heladera',
 		10,
-		500,
+		25000,
 		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHoRzrGqCF_jN_zcu83LSpWIFcYuqpAfDS4Q11BPHofQ&s',
 		'Minimo',
 		'electrodomestico'		,
@@ -47,7 +47,7 @@ let heladera = new Producto(
 let ligthyear = new Producto(
 		'Buzz Lightyear',
 		10,
-		30,
+		560,
 		' https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1-XTE8QKmngh0TobclNpjGQmYP_pQafPqVNB9wd_7_A&s=10',
 		'Minimo',
 		'juguetes' ,
@@ -59,7 +59,7 @@ let ligthyear = new Producto(
 let pantalon = new Producto(
 		'Pantalon',
 		10,
-		50,
+		2500,
 		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJv2nXSqo171gJP8ndkByfFetQZxzluIUS76ds0RfQiw&s',
 		'Basico',
 		'ropa',
