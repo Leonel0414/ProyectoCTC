@@ -1,6 +1,4 @@
-import gestores from '../gestores/gestorUsuarios.js';
-import {Usuario} from '../gestores/gestorUsuarios.js';
-import {GestorUsuarios} from '../gestores/gestorUsuarios.js';
+import gestores from '../gestores/gestorUsuarios.js'
 
 const gestor = new gestores.GestorUsuarios();
 let usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
