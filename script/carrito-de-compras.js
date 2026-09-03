@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-//storage
-=======
-
->>>>>>> 92b818db7f063155c49a6798c1a13d2c39ad2160
 import { GestorProductos } from '../gestores/gestorProductos.js';
 import { Producto } from './producto.js';
 //API MONeda
