@@ -209,11 +209,13 @@ if(usuarioActivo && usuarioActivo.rol === 'admin'){
 
  //prueba
 
-let botonEliminar = document.getElementById('btnEliminar')
-let correoEliminar = document.getElementById('correoEliminar').value
+// let botonEliminar = document.getElementById('btnEliminar')
+// let correoEliminar = document.getElementById('correoEliminar').value
 
- botonEliminar.addEventListener('click', ()=>{
-    console.log('usuario')
-    gestor.eliminarUsuario(correoEliminar)
-    window.location.reload()
- })
+//  if(botonEliminar && correoEliminar){
+//      botonEliminar.addEventListener('click', ()=>{
+//         console.log('usuario')
+//         gestor.eliminarUsuario(correoEliminar)
+//         window.location.reload()
+//         })
+//  }
