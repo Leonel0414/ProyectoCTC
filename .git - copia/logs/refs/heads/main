@@ -1,0 +1,13 @@
+0000000000000000000000000000000000000000 d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 Alan Perdomo <alanperdomo1107@gmail.com> 1786238688 -0300	clone: from https://github.com/Leonel0414/ProyectoCTC.git
+d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 2bb37e2088f791cdd638f3faee94de2d35dddd83 Alan Perdomo <alanperdomo1107@gmail.com> 1786395841 -0300	pull: Fast-forward
+2bb37e2088f791cdd638f3faee94de2d35dddd83 3d5de4c2cfef1b96717f2cac6d9e47b8dd9f54fa Alan Perdomo <alanperdomo1107@gmail.com> 1786552993 -0300	pull: Fast-forward
+3d5de4c2cfef1b96717f2cac6d9e47b8dd9f54fa 55847dddabbc982edbe30cf151ab5718003dc81f Alan Perdomo <alanperdomo1107@gmail.com> 1786666827 -0300	pull: Fast-forward
+55847dddabbc982edbe30cf151ab5718003dc81f 9c64599500d759ffcb6a109d5f7d08981f602db5 Alan Perdomo <alanperdomo1107@gmail.com> 1786995223 -0300	merge Admin-a-clases: Merge made by the 'ort' strategy.
+9c64599500d759ffcb6a109d5f7d08981f602db5 fc6b18079180fd9cd70b5c04c45494a114ca1ff0 Alan Perdomo <alanperdomo1107@gmail.com> 1788366222 -0300	pull: Fast-forward
+fc6b18079180fd9cd70b5c04c45494a114ca1ff0 13dda59a5ebc3db2bc6f63357bdb81daae94bb3c Alan Perdomo <alanperdomo1107@gmail.com> 1788366821 -0300	commit (merge): Haciendo merge
+13dda59a5ebc3db2bc6f63357bdb81daae94bb3c 113abfac7eb05bc7ed99d27cc3fe760199e814b3 Alan Perdomo <alanperdomo1107@gmail.com> 1788367558 -0300	commit: Correccion de errores
+113abfac7eb05bc7ed99d27cc3fe760199e814b3 19023d97074a5a61f6fe762cf1620682253fdd0f Alan Perdomo <alanperdomo1107@gmail.com> 1788368203 -0300	commit: Cometi error con las divididas
+19023d97074a5a61f6fe762cf1620682253fdd0f 5ce2e86f5acd4aff7cc9e86cc00ae61eee1bb04b Alan Perdomo <alanperdomo1107@gmail.com> 1788368405 -0300	commit: Revirtiendo
+5ce2e86f5acd4aff7cc9e86cc00ae61eee1bb04b c458bb64895aac4414dff699d187c555aad4630f Alan Perdomo <alanperdomo1107@gmail.com> 1788368473 -0300	commit: Revirtiendo
+c458bb64895aac4414dff699d187c555aad4630f 651927628440f3e58d47efbc522e5b21a2297b94 Alan Perdomo <alanperdomo1107@gmail.com> 1788368476 -0300	revert: Revert "Agregue cambio de moneda, solo cambia el total, en admin solo se ve en usd"
+651927628440f3e58d47efbc522e5b21a2297b94 d166787107db27379d1592ecd09a23329521437d Alan Perdomo <alanperdomo1107@gmail.com> 1788369019 -0300	revert: Reapply "Agregue cambio de moneda, solo cambia el total, en admin solo se ve en usd"

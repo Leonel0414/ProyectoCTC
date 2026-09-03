@@ -12,7 +12,7 @@ let productosRegistrados = JSON.parse(localStorage.getItem("productosRegistrados
 if(productosRegistrados){
 	
 	let productos = productosRegistrados;
-
+}
 let identificacionSinMostrar = 0 ;
 let nrosIdentificacion = JSON.parse(localStorage.getItem("nrosIdentificacion"));
 
@@ -199,4 +199,4 @@ function selectorCategoria(){
 
 	let resultado = gestor.productos.filter(producto => producto.categoria == selectorCategoria);
 	mostrarProductosIndex(resultado);
-}}
+}

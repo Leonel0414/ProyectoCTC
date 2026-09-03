@@ -11,7 +11,7 @@ console.log("usuarioActivo",usuarioActivo);
 let adminEncontrado = gestor.buscarPorCorreo('admin@');
 
 if(!adminEncontrado){
-        let administrador = new Usuario('admin','admin@','1234','','','','admin')
+        let administrador = new gestores.Usuario('admin','admin@','1234','','','','admin')
         gestor.crearUsuario(administrador)
 }
 

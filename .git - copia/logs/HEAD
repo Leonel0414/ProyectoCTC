@@ -1,0 +1,81 @@
+0000000000000000000000000000000000000000 d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 Alan Perdomo <alanperdomo1107@gmail.com> 1786238688 -0300	clone: from https://github.com/Leonel0414/ProyectoCTC.git
+d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 37bc0422f11721493143cf8272c86e74a3c8640e Alan Perdomo <alanperdomo1107@gmail.com> 1786238784 -0300	checkout: moving from main to SolucionErroresA
+37bc0422f11721493143cf8272c86e74a3c8640e 6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 Alan Perdomo <alanperdomo1107@gmail.com> 1786238816 -0300	checkout: moving from SolucionErroresA to Registro_Login
+6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 37bc0422f11721493143cf8272c86e74a3c8640e Alan Perdomo <alanperdomo1107@gmail.com> 1786238857 -0300	checkout: moving from Registro_Login to SolucionErroresA
+37bc0422f11721493143cf8272c86e74a3c8640e 37bc0422f11721493143cf8272c86e74a3c8640e Alan Perdomo <alanperdomo1107@gmail.com> 1786239008 -0300	checkout: moving from SolucionErroresA to estetica
+37bc0422f11721493143cf8272c86e74a3c8640e 6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 Alan Perdomo <alanperdomo1107@gmail.com> 1786239028 -0300	checkout: moving from estetica to Registro_Login
+6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 Alan Perdomo <alanperdomo1107@gmail.com> 1786239058 -0300	checkout: moving from Registro_Login to main
+d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 Alan Perdomo <alanperdomo1107@gmail.com> 1786239073 -0300	checkout: moving from main to Registro_Login
+6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 Alan Perdomo <alanperdomo1107@gmail.com> 1786239106 -0300	checkout: moving from Registro_Login to main
+d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 Alan Perdomo <alanperdomo1107@gmail.com> 1786239121 -0300	checkout: moving from main to Registro_Login
+6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 37bc0422f11721493143cf8272c86e74a3c8640e Alan Perdomo <alanperdomo1107@gmail.com> 1786239130 -0300	checkout: moving from Registro_Login to estetica
+37bc0422f11721493143cf8272c86e74a3c8640e d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 Alan Perdomo <alanperdomo1107@gmail.com> 1786239864 -0300	checkout: moving from estetica to main
+d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 Alan Perdomo <alanperdomo1107@gmail.com> 1786239900 -0300	checkout: moving from main to main
+d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 Alan Perdomo <alanperdomo1107@gmail.com> 1786247158 -0300	checkout: moving from main to Registro_Login
+6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 37bc0422f11721493143cf8272c86e74a3c8640e Alan Perdomo <alanperdomo1107@gmail.com> 1786247335 -0300	checkout: moving from Registro_Login to estetica
+37bc0422f11721493143cf8272c86e74a3c8640e abe0a930b63ed803777d5501ba11fc4315677c74 Alan Perdomo <alanperdomo1107@gmail.com> 1786247348 -0300	merge origin/main: Merge made by the 'ort' strategy.
+abe0a930b63ed803777d5501ba11fc4315677c74 14504676fabfbc88653b8e788c2176ebeb4e4838 Alan Perdomo <alanperdomo1107@gmail.com> 1786251592 -0300	commit: Agrego bootstrap y cambio color de naranja a azul, agrego 2 imagenes, remera y heladera, y agrego un banner
+14504676fabfbc88653b8e788c2176ebeb4e4838 d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 Alan Perdomo <alanperdomo1107@gmail.com> 1786395807 -0300	checkout: moving from estetica to main
+d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 14504676fabfbc88653b8e788c2176ebeb4e4838 Alan Perdomo <alanperdomo1107@gmail.com> 1786395823 -0300	checkout: moving from main to estetica
+14504676fabfbc88653b8e788c2176ebeb4e4838 d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 Alan Perdomo <alanperdomo1107@gmail.com> 1786395830 -0300	checkout: moving from estetica to main
+d5bf2e881c76601ca5d2dcc31c15bc87b8ef6bc1 2bb37e2088f791cdd638f3faee94de2d35dddd83 Alan Perdomo <alanperdomo1107@gmail.com> 1786395841 -0300	pull: Fast-forward
+2bb37e2088f791cdd638f3faee94de2d35dddd83 2bb37e2088f791cdd638f3faee94de2d35dddd83 Alan Perdomo <alanperdomo1107@gmail.com> 1786395853 -0300	checkout: moving from main to main
+2bb37e2088f791cdd638f3faee94de2d35dddd83 14504676fabfbc88653b8e788c2176ebeb4e4838 Alan Perdomo <alanperdomo1107@gmail.com> 1786395858 -0300	checkout: moving from main to estetica
+14504676fabfbc88653b8e788c2176ebeb4e4838 6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 Alan Perdomo <alanperdomo1107@gmail.com> 1786395870 -0300	checkout: moving from estetica to Registro_Login
+6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 14504676fabfbc88653b8e788c2176ebeb4e4838 Alan Perdomo <alanperdomo1107@gmail.com> 1786395873 -0300	checkout: moving from Registro_Login to estetica
+14504676fabfbc88653b8e788c2176ebeb4e4838 971961f3e8842c0f390b1331eff77492255509a7 Alan Perdomo <alanperdomo1107@gmail.com> 1786397014 -0300	commit: Correccion de imagenes
+971961f3e8842c0f390b1331eff77492255509a7 4fb42f6ac19bd49fb965e2f1a327763664f7e1fc Alan Perdomo <alanperdomo1107@gmail.com> 1786398273 -0300	commit: Arreglo direccion de registro.js, y agrego un nuevo nav
+4fb42f6ac19bd49fb965e2f1a327763664f7e1fc 2bb37e2088f791cdd638f3faee94de2d35dddd83 Alan Perdomo <alanperdomo1107@gmail.com> 1786398286 -0300	checkout: moving from estetica to main
+2bb37e2088f791cdd638f3faee94de2d35dddd83 4fb42f6ac19bd49fb965e2f1a327763664f7e1fc Alan Perdomo <alanperdomo1107@gmail.com> 1786398303 -0300	checkout: moving from main to estetica
+4fb42f6ac19bd49fb965e2f1a327763664f7e1fc 1c22357298a30e639c639d5aca91c88532378edc Alan Perdomo <alanperdomo1107@gmail.com> 1786398855 -0300	commit: Cambio banner
+1c22357298a30e639c639d5aca91c88532378edc 28a667671ce58d8f627aace10423d9d1e5bc3678 Alan Perdomo <alanperdomo1107@gmail.com> 1786418698 -0300	commit: Agrego nav a todos los html, agrego disenio a registro, falta card de info-producto
+28a667671ce58d8f627aace10423d9d1e5bc3678 2bb37e2088f791cdd638f3faee94de2d35dddd83 Alan Perdomo <alanperdomo1107@gmail.com> 1786418855 -0300	checkout: moving from estetica to main
+2bb37e2088f791cdd638f3faee94de2d35dddd83 28a667671ce58d8f627aace10423d9d1e5bc3678 Alan Perdomo <alanperdomo1107@gmail.com> 1786418892 -0300	checkout: moving from main to estetica
+28a667671ce58d8f627aace10423d9d1e5bc3678 93f9376c742695152e540a08bb62d31b75d0701b Alan Perdomo <alanperdomo1107@gmail.com> 1786483648 -0300	commit: Cambio color de nombres en nav a blanco, agrego la card con bootstrap a producto-info al igual que su respectivo nav, agrego flecha para volver en carrito.html
+93f9376c742695152e540a08bb62d31b75d0701b 6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 Alan Perdomo <alanperdomo1107@gmail.com> 1786484167 -0300	checkout: moving from estetica to Registro_Login
+6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 93f9376c742695152e540a08bb62d31b75d0701b Alan Perdomo <alanperdomo1107@gmail.com> 1786484183 -0300	checkout: moving from Registro_Login to estetica
+93f9376c742695152e540a08bb62d31b75d0701b 3aca3827c26ab8aa17db5ef98b9e56f2bc043bec Alan Perdomo <alanperdomo1107@gmail.com> 1786485101 -0300	commit: Cambio precio de pantalon
+3aca3827c26ab8aa17db5ef98b9e56f2bc043bec 5ca3a8757814a6b3d867af29c81e7070dc811541 Alan Perdomo <alanperdomo1107@gmail.com> 1786485224 -0300	commit: Agrego flecha para volver en producto-info
+5ca3a8757814a6b3d867af29c81e7070dc811541 41bf3bfb443bd5875db99375862c80ce3d87aa08 Alan Perdomo <alanperdomo1107@gmail.com> 1786486118 -0300	commit: Agrego minlength a registro (no funciona todavia) y cuando se crea la cuenta se envia directo al login
+41bf3bfb443bd5875db99375862c80ce3d87aa08 d3ecd55902645f51c8c7bee9ecba3a7dac99be90 Alan Perdomo <alanperdomo1107@gmail.com> 1786490575 -0300	commit: Agrego filtros de registro funcionales(minimo 8 caracteres contrasena, minimo 2 letras nombre, minimo 3 letras correo
+d3ecd55902645f51c8c7bee9ecba3a7dac99be90 af056c60b3bb6153d4c38ab7a0211cc152e2a61a Alan Perdomo <alanperdomo1107@gmail.com> 1786513536 -0300	commit: ..
+af056c60b3bb6153d4c38ab7a0211cc152e2a61a 2bb37e2088f791cdd638f3faee94de2d35dddd83 Alan Perdomo <alanperdomo1107@gmail.com> 1786514521 -0300	checkout: moving from estetica to main
+2bb37e2088f791cdd638f3faee94de2d35dddd83 af056c60b3bb6153d4c38ab7a0211cc152e2a61a Alan Perdomo <alanperdomo1107@gmail.com> 1786552973 -0300	checkout: moving from main to estetica
+af056c60b3bb6153d4c38ab7a0211cc152e2a61a 2bb37e2088f791cdd638f3faee94de2d35dddd83 Alan Perdomo <alanperdomo1107@gmail.com> 1786552989 -0300	checkout: moving from estetica to main
+2bb37e2088f791cdd638f3faee94de2d35dddd83 3d5de4c2cfef1b96717f2cac6d9e47b8dd9f54fa Alan Perdomo <alanperdomo1107@gmail.com> 1786552993 -0300	pull: Fast-forward
+3d5de4c2cfef1b96717f2cac6d9e47b8dd9f54fa af056c60b3bb6153d4c38ab7a0211cc152e2a61a Alan Perdomo <alanperdomo1107@gmail.com> 1786553010 -0300	checkout: moving from main to estetica
+af056c60b3bb6153d4c38ab7a0211cc152e2a61a 0000000000000000000000000000000000000000 Alan Perdomo <alanperdomo1107@gmail.com> 1786553070 -0300	Branch: renamed refs/heads/estetica to refs/heads/Admin-a-clases
+0000000000000000000000000000000000000000 af056c60b3bb6153d4c38ab7a0211cc152e2a61a Alan Perdomo <alanperdomo1107@gmail.com> 1786553070 -0300	Branch: renamed refs/heads/estetica to refs/heads/Admin-a-clases
+af056c60b3bb6153d4c38ab7a0211cc152e2a61a 9b2de3cb67652677a607e0861c97259364765a27 Alan Perdomo <alanperdomo1107@gmail.com> 1786666412 -0300	commit: Paso objeto producto a clases, creo clase producto con su respectivo js, creo gestor de productos con su respectivo js, cambio objetos de productos a clases de productos en index.js, vinculo los html con los js
+9b2de3cb67652677a607e0861c97259364765a27 6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 Alan Perdomo <alanperdomo1107@gmail.com> 1786666741 -0300	checkout: moving from Admin-a-clases to Registro_Login
+6bc3a654b1d2cfcbb65ceb8b0854c9ff92adee71 670cb9c2cb7613ed4f40939e94003553d78109ce Alan Perdomo <alanperdomo1107@gmail.com> 1786666747 -0300	pull: Fast-forward
+670cb9c2cb7613ed4f40939e94003553d78109ce 3d5de4c2cfef1b96717f2cac6d9e47b8dd9f54fa Alan Perdomo <alanperdomo1107@gmail.com> 1786666822 -0300	checkout: moving from Registro_Login to main
+3d5de4c2cfef1b96717f2cac6d9e47b8dd9f54fa 55847dddabbc982edbe30cf151ab5718003dc81f Alan Perdomo <alanperdomo1107@gmail.com> 1786666827 -0300	pull: Fast-forward
+55847dddabbc982edbe30cf151ab5718003dc81f 670cb9c2cb7613ed4f40939e94003553d78109ce Alan Perdomo <alanperdomo1107@gmail.com> 1786667622 -0300	checkout: moving from main to Registro_Login
+670cb9c2cb7613ed4f40939e94003553d78109ce 9b2de3cb67652677a607e0861c97259364765a27 Alan Perdomo <alanperdomo1107@gmail.com> 1786994777 -0300	checkout: moving from Registro_Login to Admin-a-clases
+9b2de3cb67652677a607e0861c97259364765a27 81099abf0c828a7346e790a2c04f37cd4e603b4e Alan Perdomo <alanperdomo1107@gmail.com> 1786995031 -0300	commit: Creo carpeta gestores, redirecciono direcciones de gestorProductos
+81099abf0c828a7346e790a2c04f37cd4e603b4e 55847dddabbc982edbe30cf151ab5718003dc81f Alan Perdomo <alanperdomo1107@gmail.com> 1786995114 -0300	checkout: moving from Admin-a-clases to main
+55847dddabbc982edbe30cf151ab5718003dc81f 81099abf0c828a7346e790a2c04f37cd4e603b4e Alan Perdomo <alanperdomo1107@gmail.com> 1786995133 -0300	checkout: moving from main to Admin-a-clases
+81099abf0c828a7346e790a2c04f37cd4e603b4e 55847dddabbc982edbe30cf151ab5718003dc81f Alan Perdomo <alanperdomo1107@gmail.com> 1786995156 -0300	checkout: moving from Admin-a-clases to main
+55847dddabbc982edbe30cf151ab5718003dc81f 81099abf0c828a7346e790a2c04f37cd4e603b4e Alan Perdomo <alanperdomo1107@gmail.com> 1786995177 -0300	checkout: moving from main to Admin-a-clases
+81099abf0c828a7346e790a2c04f37cd4e603b4e 55847dddabbc982edbe30cf151ab5718003dc81f Alan Perdomo <alanperdomo1107@gmail.com> 1786995184 -0300	checkout: moving from Admin-a-clases to main
+55847dddabbc982edbe30cf151ab5718003dc81f 9c64599500d759ffcb6a109d5f7d08981f602db5 Alan Perdomo <alanperdomo1107@gmail.com> 1786995223 -0300	merge Admin-a-clases: Merge made by the 'ort' strategy.
+9c64599500d759ffcb6a109d5f7d08981f602db5 81099abf0c828a7346e790a2c04f37cd4e603b4e Alan Perdomo <alanperdomo1107@gmail.com> 1786995515 -0300	checkout: moving from main to Admin-a-clases
+81099abf0c828a7346e790a2c04f37cd4e603b4e da96baa66aeed8d0494c2ff373338c11e42c2d79 Alan Perdomo <alanperdomo1107@gmail.com> 1787077712 -0300	commit: g
+da96baa66aeed8d0494c2ff373338c11e42c2d79 a40b1a4f82466208996c18c9d72888fa1477226a Alan Perdomo <alanperdomo1107@gmail.com> 1787088931 -0300	commit: Agregue setters y getters, import y export, ver producto en desarrollo
+a40b1a4f82466208996c18c9d72888fa1477226a 356174005e249ebb00f51687b4278b790c50f112 Alan Perdomo <alanperdomo1107@gmail.com> 1787701563 -0300	commit: Vinculo imagenes de index.html a las paginas de verProducto.
+356174005e249ebb00f51687b4278b790c50f112 00f1668791eec877829aec69c0a8515836163a0b Alan Perdomo <alanperdomo1107@gmail.com> 1787708028 -0300	commit: Corrijo error de filtrado
+00f1668791eec877829aec69c0a8515836163a0b 9c64599500d759ffcb6a109d5f7d08981f602db5 Alan Perdomo <alanperdomo1107@gmail.com> 1787922796 -0300	checkout: moving from Admin-a-clases to main
+9c64599500d759ffcb6a109d5f7d08981f602db5 670cb9c2cb7613ed4f40939e94003553d78109ce Alan Perdomo <alanperdomo1107@gmail.com> 1787922820 -0300	checkout: moving from main to Registro_Login
+670cb9c2cb7613ed4f40939e94003553d78109ce 00f1668791eec877829aec69c0a8515836163a0b Alan Perdomo <alanperdomo1107@gmail.com> 1787922851 -0300	checkout: moving from Registro_Login to Admin-a-clases
+00f1668791eec877829aec69c0a8515836163a0b 92b818db7f063155c49a6798c1a13d2c39ad2160 Alan Perdomo <alanperdomo1107@gmail.com> 1787934355 -0300	commit: Agregue cambio de moneda, solo cambia el total, en admin solo se ve en usd
+92b818db7f063155c49a6798c1a13d2c39ad2160 9eb5ec0e43f5c510e316273701b248886e4cca70 Alan Perdomo <alanperdomo1107@gmail.com> 1788366166 -0300	commit: Corrijo api tardada, falta un enlace para ir a la seccion admin
+9eb5ec0e43f5c510e316273701b248886e4cca70 9c64599500d759ffcb6a109d5f7d08981f602db5 Alan Perdomo <alanperdomo1107@gmail.com> 1788366193 -0300	checkout: moving from Admin-a-clases to main
+9c64599500d759ffcb6a109d5f7d08981f602db5 fc6b18079180fd9cd70b5c04c45494a114ca1ff0 Alan Perdomo <alanperdomo1107@gmail.com> 1788366222 -0300	pull: Fast-forward
+fc6b18079180fd9cd70b5c04c45494a114ca1ff0 13dda59a5ebc3db2bc6f63357bdb81daae94bb3c Alan Perdomo <alanperdomo1107@gmail.com> 1788366821 -0300	commit (merge): Haciendo merge
+13dda59a5ebc3db2bc6f63357bdb81daae94bb3c 113abfac7eb05bc7ed99d27cc3fe760199e814b3 Alan Perdomo <alanperdomo1107@gmail.com> 1788367558 -0300	commit: Correccion de errores
+113abfac7eb05bc7ed99d27cc3fe760199e814b3 19023d97074a5a61f6fe762cf1620682253fdd0f Alan Perdomo <alanperdomo1107@gmail.com> 1788368203 -0300	commit: Cometi error con las divididas
+19023d97074a5a61f6fe762cf1620682253fdd0f 5ce2e86f5acd4aff7cc9e86cc00ae61eee1bb04b Alan Perdomo <alanperdomo1107@gmail.com> 1788368405 -0300	commit: Revirtiendo
+5ce2e86f5acd4aff7cc9e86cc00ae61eee1bb04b c458bb64895aac4414dff699d187c555aad4630f Alan Perdomo <alanperdomo1107@gmail.com> 1788368473 -0300	commit: Revirtiendo
+c458bb64895aac4414dff699d187c555aad4630f 651927628440f3e58d47efbc522e5b21a2297b94 Alan Perdomo <alanperdomo1107@gmail.com> 1788368476 -0300	revert: Revert "Agregue cambio de moneda, solo cambia el total, en admin solo se ve en usd"
+651927628440f3e58d47efbc522e5b21a2297b94 d166787107db27379d1592ecd09a23329521437d Alan Perdomo <alanperdomo1107@gmail.com> 1788369019 -0300	revert: Reapply "Agregue cambio de moneda, solo cambia el total, en admin solo se ve en usd"

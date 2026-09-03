@@ -1,0 +1,16 @@
+Reapply "Agregue cambio de moneda, solo cambia el total, en admin solo se ve en usd"
+
+This reverts commit 651927628440f3e58d47efbc522e5b21a2297b94.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	modified:   carrito.html
+#	modified:   css/style.css
+#	modified:   script/carrito-de-compras.js
+#	modified:   script/index.js
+#
