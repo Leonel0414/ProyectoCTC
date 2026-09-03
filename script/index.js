@@ -1,13 +1,18 @@
 import { GestorProductos } from '../gestores/gestorProductos.js';
 import { Producto } from './producto.js';
-import {agregarCarrito} from './carrito-de-compras.js'
+import {agregarCarrito} from './carrito-de-compras.js';
+
 
 let gestor = new GestorProductos();
 
 let productosPredeterminados = [];
 
-let contenedorRecomendados = document.getElementById('contenedorProductosRecomendados');
+let productosRegistrados = JSON.parse(localStorage.getItem("productosRegistrados"))
 
+if(productosRegistrados){
+	
+	let productos = productosRegistrados;
+}
 let identificacionSinMostrar = 0 ;
 let nrosIdentificacion = JSON.parse(localStorage.getItem("nrosIdentificacion"));
 
@@ -15,6 +20,31 @@ function contadorIdentificador(){
 	return identificacionSinMostrar
 	
 }
+
+export async function obtenerDatos(){
+    try{
+        let respuesta = await fetch('https://v6.exchangerate-api.com/v6/0f10c6deb322b144205b4d48/latest/USD'); 
+ 
+        if(!respuesta.ok){ 
+            throw new Error('No se pudo conectar con la API'); 
+ 
+        } 
+        let datos = await respuesta.json(); 
+		
+		let euro = datos.conversion_rates.EUR;
+		let peso = datos.conversion_rates.UYU;
+
+		localStorage.setItem('Euro',JSON.stringify(euro));
+		localStorage.setItem('Peso',JSON.stringify(peso));
+
+    } 
+    catch(error){ 
+        console.error('Error: ',error); 
+        return null;
+    } 
+} 
+ 
+obtenerDatos(); 
 
 let remera = new Producto (
 		'Remera',
@@ -97,7 +127,6 @@ function buscaElProducto(idProducto){
 }
 
 
-
 	
 console.log(gestor.productos);	
 	
@@ -125,7 +154,7 @@ function mostrarProductosIndex(productos){
 			li.className = 'productosIndex';
 
 			li.innerHTML = `
-				<img class = 'img_productosIndex' src= "${producto.foto}">
+				<img class = 'img_productosIndex' alt='${producto.nombre}' src= "${producto.foto}">
 
 				<p><span>Nombre del producto:</span><br>${producto.nombre}</p>
 

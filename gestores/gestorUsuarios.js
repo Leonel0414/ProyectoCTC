@@ -1,16 +1,12 @@
-
-class Usuario{
-    constructor(nombre,correo,contrasena, telefono, departamento,fecha,direccion,rol){
+ export class Usuario{
+    constructor(nombre,correo,contrasena, telefono, departamento,direccion,rol){
         this.nombre = nombre || "indefenido";
         this.correo = correo || "indefinido";
         this.contrasena = contrasena || "indefinido";
         this.telefono = telefono || "indefinido";
         this.departamento = departamento || "indefinido";
-        this.fechaNacimiento = fecha || "indefinido";
         this.direccion = direccion || "indefinido";
-
-        this.rol = rol || "usuario";
-        // this.activo = true;
+        this.rol = rol || "indefinido";
     }
 
     validarContrasena(contrasena){
@@ -22,7 +18,7 @@ class Usuario{
     }
 }
 
-class GestorUsuarios{
+export class GestorUsuarios{
     constructor(){
         let usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
 
@@ -34,7 +30,6 @@ class GestorUsuarios{
             usuario.contrasena,
             usuario.telefono,
             usuario.departamento,
-            usuario.fechaNacimiento,
             usuario.direccion,
             usuario.rol
             )
@@ -68,17 +63,7 @@ class GestorUsuarios{
     }
 
     crearID(){
-        if(this.usuarios.length == 0){
-            return 1
-        }
-        else{
-            let id;
-            for(let usuario of this.usuarios){
-                id = Math.max(usuario.id);
-            }
-            console.log('ID mas alto',id)
-            return id + 1
-        }
+        return this.usuarios.length + 1
     }
 
     // desactivarUsuario(usuario){
@@ -90,10 +75,8 @@ class GestorUsuarios{
         console.log("listaUsuarios", this.usuarios) 
     }
 
-    eliminarUsuario(correo){
-        let usuario = this.buscarPorCorreo(correo)
-        console.log(usuario)
-        this.usuarios = this.usuarios.filter(usuario => usuario.correo != correo);
+    eliminarUsuario(){
+        this.usuarios.pop()
         this.guardarUsuarios()
     }
 }
