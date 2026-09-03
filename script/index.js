@@ -154,7 +154,7 @@ function mostrarProductosIndex(productos){
 			li.className = 'productosIndex';
 
 			li.innerHTML = `
-				<img class = 'img_productosIndex' src= "${producto.foto}">
+				<img class = 'img_productosIndex' alt='${producto.nombre}' src= "${producto.foto}">
 
 				<p><span>Nombre del producto:</span><br>${producto.nombre}</p>
 
